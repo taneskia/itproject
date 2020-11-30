@@ -1,6 +1,7 @@
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/css?family=Exo&display=swap');
 
 * {
+  font-family: 'Exo', sans-serif; 
   box-sizing: border-box;
 }
 
@@ -10,6 +11,10 @@ html, body {
 
 body {
   margin: 0; 
-  font-family: Roboto, "Helvetica Neue", sans-serif; 
-  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png");
+  //background: url("https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png");
+}
+
+.main-center {
+  width: 95%;
+  margin: 0 auto;
 }
