@@ -21,7 +21,7 @@ namespace server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvc();
+            services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddDbContext<ItprojectContext>(options =>
                 options.UseMySQL("server=127.0.0.1;user=temp;password=Temp12345;database=itproject"));
         }
@@ -34,15 +34,11 @@ namespace server
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseMvc();
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routes =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
             });
         }
     }
