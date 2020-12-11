@@ -9,9 +9,11 @@ namespace server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BuyerController : ControllerBase
+    public class BuyerController : BaseController
     {
+
         [HttpGet]
+        [Authorize]
         public string test()
         {
             return "BuyerTest";

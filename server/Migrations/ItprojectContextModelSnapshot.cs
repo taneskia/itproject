@@ -17,6 +17,59 @@ namespace server.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("server.Entities.Account", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<bool>("AcceptTerms")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("PasswordReset")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("ResetToken")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ResetTokenExpires")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("VerificationToken")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("Verified")
+                        .HasColumnType("datetime");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Accounts");
+                });
+
             modelBuilder.Entity("server.Models.Order", b =>
                 {
                     b.Property<int>("ID")
@@ -102,6 +155,49 @@ namespace server.Migrations
                     b.HasBaseType("server.Models.User");
 
                     b.HasDiscriminator().HasValue("Market");
+                });
+
+            modelBuilder.Entity("server.Entities.Account", b =>
+                {
+                    b.OwnsMany("server.Entities.RefreshToken", "RefreshTokens", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
+
+                            b1.Property<int>("AccountId")
+                                .HasColumnType("int");
+
+                            b1.Property<DateTime>("Created")
+                                .HasColumnType("datetime");
+
+                            b1.Property<string>("CreatedByIp")
+                                .HasColumnType("text");
+
+                            b1.Property<DateTime>("Expires")
+                                .HasColumnType("datetime");
+
+                            b1.Property<string>("ReplacedByToken")
+                                .HasColumnType("text");
+
+                            b1.Property<DateTime?>("Revoked")
+                                .HasColumnType("datetime");
+
+                            b1.Property<string>("RevokedByIp")
+                                .HasColumnType("text");
+
+                            b1.Property<string>("Token")
+                                .HasColumnType("text");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("AccountId");
+
+                            b1.ToTable("RefreshToken");
+
+                            b1.WithOwner("Account")
+                                .HasForeignKey("AccountId");
+                        });
                 });
 
             modelBuilder.Entity("server.Models.Product", b =>

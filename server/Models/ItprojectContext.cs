@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using server.Entities;
 
 namespace server.Models{
     public class ItprojectContext : DbContext{
         public ItprojectContext(DbContextOptions<ItprojectContext> options) : base(options){}
 
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Product> Product { get; set; }
