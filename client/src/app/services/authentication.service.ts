@@ -5,6 +5,7 @@ import {UtilitiesService} from "../helpers/utilities.service";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Inject, Injectable, InjectionToken} from '@angular/core';
 import {BehaviorSubject, Observable, of, throwError} from "rxjs";
+import { RegisterRequest } from '../models/register-request.model';
 
 const STORAGE_KEY = 'current-user';
 export const USER_SERVICE_STORAGE = new InjectionToken<StorageService>('USER_SERVICE_STORAGE');
@@ -50,8 +51,18 @@ export class AuthenticationService {
         );
     }
 
-    register(user: User): Observable<any> {
-        return this.authenticate(user, "register");
+    register(user: RegisterRequest): Observable<any> {
+        console.log(user);
+        return this.http.post(
+            this.utils.getAuthApi("register"), JSON.stringify(user), {headers: this.headers}
+        ).pipe(
+            map(res => {
+                return res;
+            }),
+            catchError(err => {
+                return throwError(err);
+            })
+        );
     }
 
     login(user: User): Observable<any> {

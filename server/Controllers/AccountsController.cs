@@ -63,6 +63,7 @@ namespace server.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterRequest model)
         {
+            System.Console.WriteLine(model);
             _accountService.Register(model, Request.Headers["origin"]);
             return Ok(new { message = "Registration successful, please check your email for verification instructions" });
         }

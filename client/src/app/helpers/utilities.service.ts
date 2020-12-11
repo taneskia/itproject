@@ -7,9 +7,9 @@ export class UtilitiesService {
 
   constructor() { }
 
-  private baseURL = 'https://localhost:5001';
+  private baseURL = 'http://localhost:5000';
 
-  private authAPI = this.baseURL + '/api/Authentication/';
+  private authAPI = this.baseURL + '/Accounts/';
 
   getAuthApi(path: string = ''): string { return this.authAPI + path; }
 }

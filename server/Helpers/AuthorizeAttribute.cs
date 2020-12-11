@@ -19,7 +19,6 @@ public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     public void OnAuthorization(AuthorizationFilterContext context)
     {
         var account = (Account)context.HttpContext.Items["Account"];
-        System.Console.WriteLine(account);
         
         if (account == null || (_roles.Any() && !_roles.Contains(account.Role)))
         {
