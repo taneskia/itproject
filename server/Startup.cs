@@ -39,7 +39,7 @@ namespace server
 
             // configure DI for application services
             services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped<IEmailService, EmailService>();
+            //services.AddScoped<IEmailService, EmailService>();
 
         }
 

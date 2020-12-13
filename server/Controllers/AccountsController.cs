@@ -63,17 +63,16 @@ namespace server.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterRequest model)
         {
-            System.Console.WriteLine(model);
             _accountService.Register(model, Request.Headers["origin"]);
-            return Ok(new { message = "Registration successful, please check your email for verification instructions" });
+            return Ok(new { message = "Registration successful" });
         }
 
-        [HttpPost("verify-email")]
-        public IActionResult VerifyEmail(VerifyEmailRequest model)
-        {
-            _accountService.VerifyEmail(model.Token);
-            return Ok(new { message = "Verification successful, you can now login" });
-        }
+        // [HttpPost("verify-email")]
+        // public IActionResult VerifyEmail(VerifyEmailRequest model)
+        // {
+        //     _accountService.VerifyEmail(model.Token);
+        //     return Ok(new { message = "Verification successful, you can now login" });
+        // }
 
         [HttpPost("forgot-password")]
         public IActionResult ForgotPassword(ForgotPasswordRequest model)
@@ -82,12 +81,12 @@ namespace server.Controllers
             return Ok(new { message = "Please check your email for password reset instructions" });
         }
 
-        [HttpPost("validate-reset-token")]
-        public IActionResult ValidateResetToken(ValidateResetTokenRequest model)
-        {
-            _accountService.ValidateResetToken(model);
-            return Ok(new { message = "Token is valid" });
-        }
+        // [HttpPost("validate-reset-token")]
+        // public IActionResult ValidateResetToken(ValidateResetTokenRequest model)
+        // {
+        //     _accountService.ValidateResetToken(model);
+        //     return Ok(new { message = "Token is valid" });
+        // }
 
         [HttpPost("reset-password")]
         public IActionResult ResetPassword(ResetPasswordRequest model)

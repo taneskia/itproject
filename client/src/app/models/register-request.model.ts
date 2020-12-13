@@ -1,11 +1,13 @@
 export class RegisterRequest {
-    Title : string;
-    FirstName : string;
-    LastName : string;
+    Name : string;
     Email : string;
     Password : string;
     ConfirmPassword : string;
-    AcceptTerms : boolean;
+    Role: Role;
 }
 
-
+enum Role {
+    Buyer,
+    Freelancer, 
+    Market
+}

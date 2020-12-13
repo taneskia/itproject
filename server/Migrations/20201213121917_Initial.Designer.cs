@@ -9,8 +9,8 @@ using server.Models;
 namespace server.Migrations
 {
     [DbContext(typeof(ItprojectContext))]
-    [Migration("20201208142222_accounts")]
-    partial class accounts
+    [Migration("20201213121917_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,19 +25,13 @@ namespace server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<bool>("AcceptTerms")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("LastName")
+                    b.Property<string>("Name")
                         .HasColumnType("text");
 
                     b.Property<string>("PasswordHash")
@@ -55,16 +49,7 @@ namespace server.Migrations
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("text");
-
                     b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("VerificationToken")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("Verified")
                         .HasColumnType("datetime");
 
                     b.HasKey("Id");

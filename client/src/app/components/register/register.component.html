@@ -11,19 +11,38 @@
         <img src="https://img.icons8.com/bubbles/344/email-male.png" alt="Registration Image" />
       </div>
       <div class="col">
-        <form [formGroup]="registerForm" id="registration-form" (ngSubmit)="register()">
+        <form ngNativeValidate [formGroup]="registerForm" id="registration-form" (ngSubmit)="register()">
           <div class="form-group">
-            <label for="emailControl">Email address</label>
-            <input formControlName="email" type="email" class="form-control" id="emailControl" aria-describedby="emailHelp" placeholder="Enter email">
+            <label>Full Name</label>
+            <input formControlName="name" class="form-control" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <input formControlName="email" type="email" class="form-control" placeholder="Enter email" required>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
-            <label for="passwordControl">Password</label>
-            <input formControlName="password" type="password" class="form-control" id="passwordControl" placeholder="Password">
+            <label>Password</label>
+            <input formControlName="password" type="password" class="form-control" placeholder="Password" required>
           </div>
           <div class="form-group">
-            <label for="passwordConfirmControl">Confirm Password</label>
-            <input formControlName="confirmPassword" type="password" class="form-control" id="passwordConfirmControl" placeholder="Confirm Password">
+            <label>Confirm Password</label>
+            <input formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" required>
+          </div>
+          <p class="mb-1">User Type</p>
+          <div class="bg-light border p-3 rounded d-flex justify-content-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="userRole" class="form-check-input" type="radio" name="userRole" id="inlineRadio1" value="Buyer" required>
+              <label class="form-check-label" for="inlineRadio1">Buyer</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input formControlName="userRole" class="form-check-input" type="radio" name="userRole" id="inlineRadio2" value="Freelancer">
+              <label class="form-check-label" for="inlineRadio2">Freelancer</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input formControlName="userRole" class="form-check-input" type="radio" name="userRole" id="inlineRadio3" value="Market">
+              <label class="form-check-label" for="inlineRadio3">Market</label>
+            </div>
           </div>
           <div class="d-flex justify-content-end mt-4">
             <button type="submit" class="btn btn-success btn-block">Register</button>

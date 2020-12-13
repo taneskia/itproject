@@ -1,16 +1,33 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace server.Migrations
 {
-    public partial class models : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Discriminator",
-                table: "Users",
-                nullable: false);
+            migrationBuilder.CreateTable(
+                name: "Accounts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    Role = table.Column<int>(nullable: false),
+                    ResetToken = table.Column<string>(nullable: true),
+                    ResetTokenExpires = table.Column<DateTime>(nullable: true),
+                    PasswordReset = table.Column<DateTime>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false),
+                    Updated = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Accounts", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Order",
@@ -24,6 +41,46 @@ namespace server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Order", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RefreshToken",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    AccountId = table.Column<int>(nullable: false),
+                    Token = table.Column<string>(nullable: true),
+                    Expires = table.Column<DateTime>(nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    CreatedByIp = table.Column<string>(nullable: true),
+                    Revoked = table.Column<DateTime>(nullable: true),
+                    RevokedByIp = table.Column<string>(nullable: true),
+                    ReplacedByToken = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RefreshToken", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RefreshToken_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,6 +139,11 @@ namespace server.Migrations
                 name: "IX_ProductOrders_OrderID",
                 table: "ProductOrders",
                 column: "OrderID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RefreshToken_AccountId",
+                table: "RefreshToken",
+                column: "AccountId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -90,14 +152,19 @@ namespace server.Migrations
                 name: "ProductOrders");
 
             migrationBuilder.DropTable(
+                name: "RefreshToken");
+
+            migrationBuilder.DropTable(
                 name: "Order");
 
             migrationBuilder.DropTable(
                 name: "Product");
 
-            migrationBuilder.DropColumn(
-                name: "Discriminator",
-                table: "Users");
+            migrationBuilder.DropTable(
+                name: "Accounts");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

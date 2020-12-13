@@ -1,17 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using server.Entities;
 
 namespace server.Models.Accounts
 {
     public class RegisterRequest
     {
         [Required]
-        public string Title { get; set; }
-
-        [Required]
-        public string FirstName { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [EmailAddress]
@@ -25,7 +20,7 @@ namespace server.Models.Accounts
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
-        [Range(typeof(bool), "true", "true")]
-        public bool AcceptTerms { get; set; }
+        [Required]
+        public string Role { get; set; }
     }
 }

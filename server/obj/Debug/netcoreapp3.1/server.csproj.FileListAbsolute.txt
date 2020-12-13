@@ -1,128 +1,201 @@
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\appsettings.Development.json
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\server.exe
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\server.deps.json
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\server.runtimeconfig.json
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\server.runtimeconfig.dev.json
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\server.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\server.pdb
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\MySql.Data.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\MySql.Data.EntityFrameworkCore.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.csprojAssemblyReference.cache
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.AssemblyInfoInputs.cache
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.AssemblyInfo.cs
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.csproj.CoreCompileInputs.cache
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.MvcApplicationPartsAssemblyInfo.cache
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.RazorTargetAssemblyInfo.cache
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.csproj.CopyComplete
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\staticwebassets\server.StaticWebAssets.Manifest.cache
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\staticwebassets\server.StaticWebAssets.xml
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.dll
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.pdb
-D:\Work\Fax\Vtora Godina\Vtor semestar\Internet tehnologii\Proekt\itproject\itproject\server\obj\Debug\netcoreapp3.1\server.genruntimeconfig.cache
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\server.exe
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\server.deps.json
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\server.runtimeconfig.json
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\server.runtimeconfig.dev.json
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\server.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\server.pdb
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\MySql.Data.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\MySql.Data.EntityFrameworkCore.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.csprojAssemblyReference.cache
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.AssemblyInfoInputs.cache
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.AssemblyInfo.cs
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.csproj.CoreCompileInputs.cache
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.RazorTargetAssemblyInfo.cache
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.csproj.CopyComplete
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\staticwebassets\server.StaticWebAssets.Manifest.cache
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\staticwebassets\server.StaticWebAssets.xml
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.dll
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.pdb
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.genruntimeconfig.cache
-C:\Users\Andrej\Desktop\itproject\server\obj\Debug\netcoreapp3.1\server.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\AutoMapper.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\BCrypt.Net-Next.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\MailKit.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\MimeKit.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Andrej\Desktop\itproject\server\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/appsettings.Development.json
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/appsettings.json
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/server.exe
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/server.deps.json
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/server.runtimeconfig.json
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/server.runtimeconfig.dev.json
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/server.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/server.pdb
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/BouncyCastle.Crypto.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Google.Protobuf.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/K4os.Compression.LZ4.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/K4os.Compression.LZ4.Streams.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/K4os.Hash.xxHash.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Bcl.AsyncInterfaces.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Bcl.HashCode.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Abstractions.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Relational.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/MySql.Data.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Ubiety.Dns.Core.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Zstandard.Net.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/MySql.Data.EntityFrameworkCore.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/Renci.SshNet.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/SshNet.Security.Cryptography.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/System.Collections.Immutable.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/System.Configuration.ConfigurationManager.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/System.Security.Cryptography.ProtectedData.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/System.Xml.XPath.XmlDocument.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.csprojAssemblyReference.cache
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.AssemblyInfoInputs.cache
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.AssemblyInfo.cs
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.csproj.CoreCompileInputs.cache
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.MvcApplicationPartsAssemblyInfo.cache
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.RazorTargetAssemblyInfo.cache
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.csproj.CopyComplete
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/staticwebassets/server.StaticWebAssets.Manifest.cache
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/staticwebassets/server.StaticWebAssets.xml
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.dll
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.pdb
+D:/Work/Fax/Vtora Godina/Vtor semestar/Internet tehnologii/Proekt/itproject/itproject/server/obj/Debug/netcoreapp3.1/server.genruntimeconfig.cache
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/appsettings.Development.json
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/appsettings.json
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/server.exe
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/server.deps.json
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/server.runtimeconfig.json
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/server.runtimeconfig.dev.json
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/server.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/server.pdb
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/BouncyCastle.Crypto.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Google.Protobuf.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/K4os.Compression.LZ4.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/K4os.Compression.LZ4.Streams.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/K4os.Hash.xxHash.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Bcl.AsyncInterfaces.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Bcl.HashCode.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Abstractions.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Relational.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/MySql.Data.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Ubiety.Dns.Core.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Zstandard.Net.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/MySql.Data.EntityFrameworkCore.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Renci.SshNet.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/SshNet.Security.Cryptography.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/System.Collections.Immutable.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/System.Configuration.ConfigurationManager.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/System.Security.Cryptography.ProtectedData.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/System.Xml.XPath.XmlDocument.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.csprojAssemblyReference.cache
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.AssemblyInfoInputs.cache
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.AssemblyInfo.cs
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.csproj.CoreCompileInputs.cache
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.RazorTargetAssemblyInfo.cache
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.csproj.CopyComplete
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/staticwebassets/server.StaticWebAssets.Manifest.cache
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/staticwebassets/server.StaticWebAssets.xml
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.dll
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.pdb
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.genruntimeconfig.cache
+C:/Users/Andrej/Desktop/itproject/server/obj/Debug/netcoreapp3.1/server.MvcApplicationPartsAssemblyInfo.cs
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/AutoMapper.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/BCrypt.Net-Next.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/MailKit.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.OpenApi.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/MimeKit.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.Swagger.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerGen.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerUI.dll
+C:/Users/Andrej/Desktop/itproject/server/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/appsettings.Development.json
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/appsettings.json
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/server
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/server.deps.json
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/server.runtimeconfig.json
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/server.runtimeconfig.dev.json
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/server.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/server.pdb
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/AutoMapper.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/BCrypt.Net-Next.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Google.Protobuf.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/K4os.Compression.LZ4.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/K4os.Compression.LZ4.Streams.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/K4os.Hash.xxHash.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/MailKit.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Bcl.AsyncInterfaces.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Bcl.HashCode.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Relational.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Microsoft.OpenApi.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/MimeKit.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/MySql.Data.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Ubiety.Dns.Core.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Zstandard.Net.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/MySql.Data.EntityFrameworkCore.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/BouncyCastle.Crypto.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Renci.SshNet.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/SshNet.Security.Cryptography.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.Swagger.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/System.Collections.Immutable.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/System.Configuration.ConfigurationManager.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/System.Security.Cryptography.ProtectedData.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/System.Xml.XPath.XmlDocument.dll
+/home/scyllius/Projects/itproject/server/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.csprojAssemblyReference.cache
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.AssemblyInfoInputs.cache
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.AssemblyInfo.cs
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.csproj.CoreCompileInputs.cache
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.MvcApplicationPartsAssemblyInfo.cs
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.MvcApplicationPartsAssemblyInfo.cache
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.RazorTargetAssemblyInfo.cache
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.csproj.CopyComplete
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/staticwebassets/server.StaticWebAssets.Manifest.cache
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/staticwebassets/server.StaticWebAssets.xml
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.dll
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.pdb
+/home/scyllius/Projects/itproject/server/obj/Debug/netcoreapp3.1/server.genruntimeconfig.cache
