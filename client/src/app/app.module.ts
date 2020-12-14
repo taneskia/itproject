@@ -16,8 +16,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {USER_SERVICE_STORAGE} from "./services/authentication.service";
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import {LOCAL_STORAGE} from "ngx-webstorage-service";
-
-
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,8 @@ import {LOCAL_STORAGE} from "ngx-webstorage-service";
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    CartComponent
+    CartComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
