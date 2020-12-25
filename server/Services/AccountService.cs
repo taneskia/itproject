@@ -13,6 +13,7 @@ using server.Entities;
 using server.Helpers;
 using server.Models.Accounts;
 using server.Models;
+using System.Text.Json;
 
 namespace server.Services
 {
@@ -111,30 +112,37 @@ namespace server.Services
 
         public void Register(RegisterRequest model, string origin)
         {
-            // validate
-            // if (_context.Accounts.Any(x => x.Email == model.Email))
-            // {
-            //     // send already registered error in email to prevent account enumeration
-            //     sendAlreadyRegisteredEmail(model.Email, origin);
-            //     return;
-            // }
+            Role role = (Role)Enum.Parse(typeof(Role), model.Role);
 
             // map model to new account object
-            var account = _mapper.Map<Account>(model);
-
-            // first registered account is an admin
-            var isFirstAccount = _context.Accounts.Count() == 0;
-            Role role = (Role) Enum.Parse(typeof(Role), model.Role);
-            account.Role = isFirstAccount ? Role.Admin : role;
+            Account account = null;
+            if (role == Role.Market)
+            {
+                Market market = _mapper.Map<Market>(model);
+                if (model.ImageUrl != null)
+                    market.ImageUrl = model.ImageUrl;
+                _context.Market.Add(market);
+                account = market;
+            }
+            else if (role == Role.Buyer)
+            {
+                Buyer buyer = _mapper.Map<Buyer>(model);
+                _context.Buyer.Add(buyer);
+                account = buyer;
+            }
+            else if (role == Role.Freelancer)
+            {
+                Freelancer freelancer = _mapper.Map<Freelancer>(model);
+                _context.Freelancer.Add(freelancer);
+                account = freelancer;
+            }
             account.Created = DateTime.UtcNow;
-
-            //TODO: Add code for each user role (Market, Freelancer, Buyer)
 
             account.PasswordHash = BC.HashPassword(model.Password);
 
-            _context.Accounts.Add(account);
             _context.SaveChanges();
         }
+
 
         public void ForgotPassword(ForgotPasswordRequest model, string origin)
         {
@@ -285,8 +293,8 @@ namespace server.Services
 
         private void removeOldRefreshTokens(Account account)
         {
-            account.RefreshTokens.RemoveAll(x => 
-                !x.IsActive && 
+            account.RefreshTokens.RemoveAll(x =>
+                !x.IsActive &&
                 x.Created.AddDays(_appSettings.RefreshTokenTTL) <= DateTime.UtcNow);
         }
 

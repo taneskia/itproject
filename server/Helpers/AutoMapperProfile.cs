@@ -1,5 +1,6 @@
 using AutoMapper;
 using server.Entities;
+using server.Models;
 using server.Models.Accounts;
 
 namespace server.Helpers
@@ -14,6 +15,10 @@ namespace server.Helpers
             CreateMap<Account, AuthenticateResponse>();
 
             CreateMap<RegisterRequest, Account>();
+
+            CreateMap<RegisterRequest, Buyer>();
+            CreateMap<RegisterRequest, Market>();
+            CreateMap<RegisterRequest, Freelancer>();
 
             CreateMap<CreateRequest, Account>();
 

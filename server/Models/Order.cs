@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using server.Entities;
 
 namespace server.Models {
     public class Order {
@@ -8,7 +9,6 @@ namespace server.Models {
         [Key]
         public int ID { get; set; }
         public Order_State State { get; set; }
-        public string Address { get; set; }
         public virtual ICollection<ProductOrder> ProductOrder { get; set; }
     }
 }

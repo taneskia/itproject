@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using server.Entities;
 
 namespace server.Models {
-    public class Market : Account {
-        public virtual List<Product> Products { get; set; }
-        public string ImageUrl { get; set; }
+    public class Freelancer : Account {
+
+        public virtual List<AccountOrder> AccountOrders { get; set; }
     }
 }

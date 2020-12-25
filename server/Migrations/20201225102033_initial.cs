@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace server.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,7 @@ namespace server.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     PasswordHash = table.Column<string>(nullable: true),
                     Role = table.Column<int>(nullable: false),
@@ -22,7 +23,9 @@ namespace server.Migrations
                     ResetTokenExpires = table.Column<DateTime>(nullable: true),
                     PasswordReset = table.Column<DateTime>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
-                    Updated = table.Column<DateTime>(nullable: true)
+                    Updated = table.Column<DateTime>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    ImageUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,8 +38,7 @@ namespace server.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    State = table.Column<int>(nullable: false),
-                    Address = table.Column<string>(nullable: true)
+                    State = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,21 +46,7 @@ namespace server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RefreshToken",
+                name: "Accounts_RefreshTokens",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -74,9 +62,9 @@ namespace server.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RefreshToken", x => x.Id);
+                    table.PrimaryKey("PK_Accounts_RefreshTokens", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RefreshToken_Accounts_AccountId",
+                        name: "FK_Accounts_RefreshTokens_Accounts_AccountId",
                         column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
@@ -91,19 +79,49 @@ namespace server.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<float>(nullable: false),
-                    Market_ID = table.Column<int>(nullable: false),
                     ImageURL = table.Column<string>(nullable: true),
-                    MarketID = table.Column<int>(nullable: true)
+                    MarketId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Product", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Product_Users_MarketID",
-                        column: x => x.MarketID,
-                        principalTable: "Users",
-                        principalColumn: "ID",
+                        name: "FK_Product_Accounts_MarketId",
+                        column: x => x.MarketId,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AccountOrders",
+                columns: table => new
+                {
+                    OrderID = table.Column<int>(nullable: false),
+                    BuyerID = table.Column<int>(nullable: false),
+                    FreelancerID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccountOrders", x => new { x.OrderID, x.BuyerID, x.FreelancerID });
+                    table.ForeignKey(
+                        name: "FK_AccountOrders_Accounts_BuyerID",
+                        column: x => x.BuyerID,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AccountOrders_Accounts_FreelancerID",
+                        column: x => x.FreelancerID,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AccountOrders_Order_OrderID",
+                        column: x => x.OrderID,
+                        principalTable: "Order",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -131,28 +149,41 @@ namespace server.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_MarketID",
+                name: "IX_AccountOrders_BuyerID",
+                table: "AccountOrders",
+                column: "BuyerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AccountOrders_FreelancerID",
+                table: "AccountOrders",
+                column: "FreelancerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Accounts_RefreshTokens_AccountId",
+                table: "Accounts_RefreshTokens",
+                column: "AccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_MarketId",
                 table: "Product",
-                column: "MarketID");
+                column: "MarketId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductOrders_OrderID",
                 table: "ProductOrders",
                 column: "OrderID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RefreshToken_AccountId",
-                table: "RefreshToken",
-                column: "AccountId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProductOrders");
+                name: "AccountOrders");
 
             migrationBuilder.DropTable(
-                name: "RefreshToken");
+                name: "Accounts_RefreshTokens");
+
+            migrationBuilder.DropTable(
+                name: "ProductOrders");
 
             migrationBuilder.DropTable(
                 name: "Order");
@@ -162,9 +193,6 @@ namespace server.Migrations
 
             migrationBuilder.DropTable(
                 name: "Accounts");
-
-            migrationBuilder.DropTable(
-                name: "Users");
         }
     }
 }

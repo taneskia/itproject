@@ -4,6 +4,7 @@ export class RegisterRequest {
     Password : string;
     ConfirmPassword : string;
     Role: Role;
+    ImageUrl : string
 }
 
 enum Role {

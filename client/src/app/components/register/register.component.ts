@@ -40,7 +40,8 @@ export class RegisterComponent implements OnInit {
         Email : this.registerForm.get('email').value,
         Password : this.registerForm.get('password').value,
         ConfirmPassword : this.registerForm.get('confirmPassword').value,
-        Role: this.registerForm.get('userRole').value
+        Role: this.registerForm.get('userRole').value,
+        ImageUrl : ' '
       }
 
       this.authService.register(request).subscribe(

@@ -7,6 +7,7 @@ namespace server.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Address { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public Role Role { get; set; }
@@ -17,7 +18,7 @@ namespace server.Entities
         public DateTime? Updated { get; set; }
         public List<RefreshToken> RefreshTokens { get; set; }
 
-        public bool OwnsToken(string token) 
+        public bool OwnsToken(string token)
         {
             return this.RefreshTokens?.Find(x => x.Token == token) != null;
         }

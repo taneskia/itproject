@@ -23,8 +23,15 @@ namespace server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Email")
                         .HasColumnType("text");
@@ -53,6 +60,28 @@ namespace server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Accounts");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Account");
+                });
+
+            modelBuilder.Entity("server.Models.AccountOrder", b =>
+                {
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BuyerID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FreelancerID")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderID", "BuyerID", "FreelancerID");
+
+                    b.HasIndex("BuyerID");
+
+                    b.HasIndex("FreelancerID");
+
+                    b.ToTable("AccountOrders");
                 });
 
             modelBuilder.Entity("server.Models.Order", b =>
@@ -60,9 +89,6 @@ namespace server.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
 
                     b.Property<int>("State")
                         .HasColumnType("int");
@@ -81,10 +107,7 @@ namespace server.Migrations
                     b.Property<string>("ImageURL")
                         .HasColumnType("text");
 
-                    b.Property<int?>("MarketID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Market_ID")
+                    b.Property<int?>("MarketId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -95,7 +118,7 @@ namespace server.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("MarketID");
+                    b.HasIndex("MarketId");
 
                     b.ToTable("Product");
                 });
@@ -115,29 +138,26 @@ namespace server.Migrations
                     b.ToTable("ProductOrders");
                 });
 
-            modelBuilder.Entity("server.Models.User", b =>
+            modelBuilder.Entity("server.Models.Buyer", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasBaseType("server.Entities.Account");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.HasDiscriminator().HasValue("Buyer");
+                });
 
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
+            modelBuilder.Entity("server.Models.Freelancer", b =>
+                {
+                    b.HasBaseType("server.Entities.Account");
 
-                    b.HasKey("ID");
-
-                    b.ToTable("Users");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
+                    b.HasDiscriminator().HasValue("Freelancer");
                 });
 
             modelBuilder.Entity("server.Models.Market", b =>
                 {
-                    b.HasBaseType("server.Models.User");
+                    b.HasBaseType("server.Entities.Account");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
 
                     b.HasDiscriminator().HasValue("Market");
                 });
@@ -178,18 +198,39 @@ namespace server.Migrations
 
                             b1.HasIndex("AccountId");
 
-                            b1.ToTable("RefreshToken");
+                            b1.ToTable("Accounts_RefreshTokens");
 
                             b1.WithOwner("Account")
                                 .HasForeignKey("AccountId");
                         });
                 });
 
+            modelBuilder.Entity("server.Models.AccountOrder", b =>
+                {
+                    b.HasOne("server.Models.Buyer", "Buyer")
+                        .WithMany("AccountOrders")
+                        .HasForeignKey("BuyerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("server.Models.Freelancer", "Freelancer")
+                        .WithMany("AccountOrders")
+                        .HasForeignKey("FreelancerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("server.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("server.Models.Product", b =>
                 {
                     b.HasOne("server.Models.Market", null)
                         .WithMany("Products")
-                        .HasForeignKey("MarketID");
+                        .HasForeignKey("MarketId");
                 });
 
             modelBuilder.Entity("server.Models.ProductOrder", b =>
