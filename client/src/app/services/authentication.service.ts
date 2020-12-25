@@ -16,10 +16,6 @@ export const USER_SERVICE_STORAGE = new InjectionToken<StorageService>('USER_SER
 })
 export class AuthenticationService {
 
-    headers = new HttpHeaders({
-        'Content-Type': 'application/json'
-    });
-
     public loggedInUser$: Observable<User>;
     private loggedInUserSubject: BehaviorSubject<User>;
 
@@ -37,6 +33,10 @@ export class AuthenticationService {
 
     public getLoggedUser(): User {
         return this.loggedInUserSubject.value;
+    }
+
+    public getToken() {
+        return this.storage.get(STORAGE_KEY) !== null ? this.storage.get(STORAGE_KEY)['jwtToken'] : undefined;
     }
 
     validateSession(): Observable<any> {
@@ -80,7 +80,7 @@ export class AuthenticationService {
 
     private authenticate(req: any, url: string) {
         return this.http.post(
-            this.utils.getAuthApi(url), JSON.stringify(req), {headers: this.headers}
+            this.utils.getAuthApi(url), JSON.stringify(req)
         ).pipe(
             map(res => {
                 return res;

@@ -32,10 +32,14 @@ export class CartComponent implements OnInit {
   }
 
   calculateSubTotal() {
-    return +(this.cart.reduce((sum, obj) => sum + obj.price * obj.amount, 0)).toFixed(2);
+    return +(this.cart.reduce((sum, obj) => sum + obj.Price * obj.Amount, 0)).toFixed(2);
   }
 
   calculateShipping() {
-    return +(this.cart.reduce((sum, obj) => sum + obj.price * obj.amount * 0.12, 0)).toFixed(2);
+    return +(this.cart.reduce((sum, obj) => sum + obj.Price * obj.Amount * 0.12, 0)).toFixed(2);
+  }
+
+  makeOrder() {
+    this.productService.buy(this.cart).subscribe();
   }
 }

@@ -15,7 +15,9 @@ namespace server.Models {
         public Buyer Buyer { get; set; }
 
         [Key, Column(Order = 3)]  
-        public int FreelancerID { get; set; }
-        public Freelancer Freelancer { get; set; }
+        public int? FreelancerID { get; set; }
+        #nullable enable
+        public Freelancer? Freelancer { get; set; }
+        #nullable disable
     }
 }

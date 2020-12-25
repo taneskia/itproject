@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace server.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -129,7 +129,8 @@ namespace server.Migrations
                 columns: table => new
                 {
                     ProductID = table.Column<int>(nullable: false),
-                    OrderID = table.Column<int>(nullable: false)
+                    OrderID = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -10,5 +10,9 @@ namespace server.Models {
         public int ID { get; set; }
         public Order_State State { get; set; }
         public virtual ICollection<ProductOrder> ProductOrder { get; set; }
+
+        public Order() {
+            this.ProductOrder = new List<ProductOrder>();
+        }
     }
 }

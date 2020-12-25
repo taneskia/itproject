@@ -7,5 +7,9 @@ namespace server.Models {
     public class Freelancer : Account {
 
         public virtual List<AccountOrder> AccountOrders { get; set; }
+
+        public Freelancer () {
+            this.AccountOrders = new List<AccountOrder>();
+        }
     }
 }

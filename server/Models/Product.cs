@@ -10,5 +10,9 @@ namespace server.Models {
         public float Price { get; set; }
         public string ImageURL { get; set; }        
         public virtual ICollection<ProductOrder> ProductOrder { get; set; }
+
+        public Product () {
+            this.ProductOrder = new List<ProductOrder>();
+        }
     }
 }

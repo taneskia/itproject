@@ -3,19 +3,21 @@
   <div class="row justify-content-between pt-3">
     <div class="col-8 h-100 shadow-sm p-3 rounded">
       <h3>Shopping Cart</h3>
+      <hr/>
+      <p class="text-center" *ngIf="this.cart.length === 0">Your cart is empty</p>
       <div *ngFor="let item of cart" class="my-3 p-3 border shadow-sm rounded d-flex align-items-center">
         <div class="item-description w-100">
           <div class="row justify-content-between align-items-center">
             <div class="col-1">
               <div class="image-container my-auto d-flex align-self-center mr-5">
-                <img src="{{item.image}}" alt="Cart Item" class="align-self-center"/>
+                <img src="{{item.Image}}" alt="Cart Item" class="align-self-center"/>
               </div>
             </div>
             <div class="col-3">
-              <p class="text-center">{{item.name}}</p>
+              <p class="text-center">{{item.Name}}</p>
             </div>
             <div class="col-2">
-              <p>US ${{(item.price * item.amount).toFixed(2)}}</p>
+              <p>US ${{(item.Price * item.Amount).toFixed(2)}}</p>
             </div>
             <div class="col-1">
               <button class="btn btn-outline-primary" (click)="decreaseProductAmount(item)">
@@ -25,7 +27,7 @@
               </button>
             </div>
             <div class="col-1">
-              <p class="text-center">{{item.amount}}</p>
+              <p class="text-center">{{item.Amount}}</p>
             </div>
             <div class="col-1">
               <button class="btn btn-outline-primary" (click)="increaseProductAmount(item)">
@@ -46,7 +48,7 @@
         </div>
       </div>
     </div>
-    <div class="col-3 shadow-sm p-3 rounded">
+    <div class="col-3 shadow-sm p-3 rounded" *ngIf="this.cart.length > 0">
       <h4>Order Summary</h4>
       <div class="d-flex justify-content-between mt-5">
         <p>Subtotal</p>
@@ -60,6 +62,7 @@
         <p>Total</p>
         <p>US ${{(calculateSubTotal() + calculateShipping()).toFixed(2)}}</p>
       </div>
+      <button class="btn btn-outline-success w-100" (click)="makeOrder()">Buy Now</button>
     </div>
   </div>
 </div>
