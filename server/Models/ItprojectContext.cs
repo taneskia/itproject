@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using server.Entities;
 
-namespace server.Models{
-    public class ItprojectContext : DbContext{
-        public ItprojectContext(DbContextOptions<ItprojectContext> options) : base(options){}
+namespace server.Models
+{
+    public class ItprojectContext : DbContext
+    {
+        public ItprojectContext(DbContextOptions<ItprojectContext> options) : base(options) { }
 
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Market> Market { get; set; }
@@ -13,10 +15,11 @@ namespace server.Models{
         public DbSet<Order> Order { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductOrder> ProductOrders { get; set; }
-        
-        protected override void OnModelCreating(ModelBuilder modelBuilder){
-            modelBuilder.Entity<ProductOrder>().HasKey(po => new {po.ProductID,po.OrderID});
-            modelBuilder.Entity<AccountOrder>().HasKey(ao => new {ao.OrderID, ao.BuyerID, ao.FreelancerID});
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductOrder>().HasKey(po => new { po.ProductID, po.OrderID });
+            modelBuilder.Entity<AccountOrder>().HasKey(ao => new { ao.OrderID, ao.BuyerID, ao.FreelancerID });
         }
     }
 }

@@ -1,55 +1,62 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Compare } from 'src/app/helpers/compare.validator';
 import { RegisterRequest } from 'src/app/models/register-request.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-
-  registerForm : FormGroup;
+  registerForm: FormGroup;
+  showAlert: boolean = false;
+  showSpinner: boolean = false;
+  success: boolean = true;
 
   constructor(
-    private formBuilder : FormBuilder, 
-    private authService : AuthenticationService,
-    private router: Router) {
+    private formBuilder: FormBuilder,
+    private authService: AuthenticationService
+  ) {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email : ['',[Validators.required, Validators.email]],
-      password : ['',[Validators.required]],
-      confirmPassword : ['',[Validators.required]],
-      userRole: [Validators.required]
-    },
-    {
-      validator : Compare('password', 'confirmPassword')
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]],
+      userRole: [Validators.required],
     });
-   }
 
-  ngOnInit(): void {
+    this.showAlert = false;
+    this.showSpinner = false;
+    this.success = false;
   }
+
+  ngOnInit(): void {}
 
   register(): void {
     if (this.registerForm.valid) {
-      let request : RegisterRequest = {
-        Name : this.registerForm.get('name').value,
-        Email : this.registerForm.get('email').value,
-        Password : this.registerForm.get('password').value,
-        ConfirmPassword : this.registerForm.get('confirmPassword').value,
+      this.showAlert = false;
+      this.showSpinner = true;
+
+      let request: RegisterRequest = {
+        Name: this.registerForm.get('name').value,
+        Email: this.registerForm.get('email').value,
+        Password: this.registerForm.get('password').value,
+        ConfirmPassword: this.registerForm.get('confirmPassword').value,
         Role: this.registerForm.get('userRole').value,
-        ImageUrl : ' '
-      }
+        ImageUrl: ' ',
+      };
 
       this.authService.register(request).subscribe(
-        res => { 
-          console.log(res); 
-          this.router.navigateByUrl('').then();
-        });
+        () => {
+          this.showAlert = false;
+          this.success = true;
+        },
+        () => {
+          this.showAlert = true;
+          this.success = false;
+        }
+      );
     }
   }
-
 }

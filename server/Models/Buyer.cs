@@ -9,7 +9,8 @@ namespace server.Models
     {
         public virtual List<AccountOrder> AccountOrders { get; set; }
 
-        public Buyer () {
+        public Buyer()
+        {
             this.AccountOrders = new List<AccountOrder>();
         }
     }

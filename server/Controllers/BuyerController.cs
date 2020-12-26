@@ -23,7 +23,7 @@ namespace server.Controllers
         }
 
         private ItprojectContext itprojectContext;
-        
+
         [HttpGet]
         [Authorize]
         public string test()
@@ -47,7 +47,7 @@ namespace server.Controllers
             {
                 // TODO: Add product in database or below line will be null
                 Product product = itprojectContext.Product.SingleOrDefault(m => m.ID == frontendProduct.ID);
-                
+
                 // if(product == null)
                 // {
                 //     product = new Product {
@@ -58,7 +58,8 @@ namespace server.Controllers
                 //     };
                 // }
 
-                ProductOrder productOrder = new ProductOrder {
+                ProductOrder productOrder = new ProductOrder
+                {
                     ProductID = product.ID,
                     Product = product,
                     OrderID = order.ID,
@@ -70,7 +71,8 @@ namespace server.Controllers
                 order.ProductOrder.Add(productOrder);
             }
 
-            AccountOrder accountOrder = new AccountOrder {
+            AccountOrder accountOrder = new AccountOrder
+            {
                 Buyer = buyer,
                 BuyerID = buyer.Id,
                 Order = order,
