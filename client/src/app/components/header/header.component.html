@@ -7,7 +7,7 @@
     <button type="button" class="btn btn-link ml-5" [routerLink]="['/products']">Products</button>
   </div>
   <div>
-    <div class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="currentUser == null">
+    <div class="btn-group" *ngIf="currentUser == null">
       <button type="button" class="btn btn-outline-success" [routerLink]="['/login']">Login</button>
       <button type="button" class="btn btn-outline-primary mr-2" [routerLink]="['/register']">Register</button>
     </div>
@@ -24,6 +24,7 @@
         {{currentUser.name}}
       </button>
       <div class="dropdown-menu dropdown-menu-right mt-2">
+        <a class="dropdown-item" href="#" [routerLink]="['/orders']">My Orders</a>
         <a class="dropdown-item" href="#" (click)="logout()">Log Out</a>
       </div>
     </div>

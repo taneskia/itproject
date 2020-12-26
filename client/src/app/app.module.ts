@@ -17,6 +17,7 @@ import { USER_SERVICE_STORAGE } from './services/authentication.service';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { LOCAL_STORAGE } from 'ngx-webstorage-service';
 import { ProductsComponent } from './components/products/products.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProductsComponent } from './components/products/products.component';
     RegisterComponent,
     CartComponent,
     ProductsComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

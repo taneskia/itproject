@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Order, OrderState } from 'src/app/models/order.model';
 import { Product } from 'src/app/models/product.model';
+import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class CartComponent implements OnInit {
   cart: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private orderService: OrderService) {}
 
   ngOnInit(): void {
     this.cart = this.productService.getCart();
@@ -30,18 +32,27 @@ export class CartComponent implements OnInit {
   }
 
   calculateSubTotal() {
-    return +this.cart
+    return this.cart
       .reduce((sum, obj) => sum + obj.Price * obj.Amount, 0)
       .toFixed(2);
   }
 
   calculateShipping() {
-    return +this.cart
+    return this.cart
       .reduce((sum, obj) => sum + obj.Price * obj.Amount * 0.12, 0)
       .toFixed(2);
   }
 
   makeOrder() {
-    this.productService.buy(this.cart).subscribe();
+    let order: Order = {
+      OrderState: OrderState.Ordered,
+      ProductOrder: this.cart
+    };
+
+    // TODO: Subscribe after added Order functionality to backend
+    this.orderService.addOrder(order);//.subscribe();
+
+    this.productService.emptyCart();
+    this.cart = this.productService.getCart();
   }
 }

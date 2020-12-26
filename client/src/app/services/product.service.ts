@@ -84,17 +84,4 @@ export class ProductService {
   public emptyCart() {
     this.cart = [];
   }
-
-  public buy(products: Product[]): Observable<any> {
-    return this.http
-      .post(this.utils.getBuyerApi('buy'), JSON.stringify(products))
-      .pipe(
-        map((res) => {
-          return res;
-        }),
-        catchError((err) => {
-          return throwError(err);
-        })
-      );
-  }
 }
