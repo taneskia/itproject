@@ -12,5 +12,8 @@ namespace server.Models {
         [Key, Column(Order = 2)]        
         public int OrderID { get; set; }        
         public Order Order { get; set; }
+
+        [Column(Order = 3)]        
+        public int Quantity { get; set; }
     }
 }

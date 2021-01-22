@@ -31,7 +31,7 @@ namespace server.Controllers
         }
 
         [Authorize]
-        [HttpGet("Products")]
+        [HttpGet("products")]
         public IEnumerable<Product> Products()
         {
             Account account = (Account)HttpContext.Items["Account"];
@@ -40,7 +40,7 @@ namespace server.Controllers
         }
 
         [Authorize]
-        [HttpPost("AddProduct")]
+        [HttpPost("addProduct")]
         public bool AddProduct([FromBody] Product product)
         {
             if (product == null)
@@ -48,6 +48,19 @@ namespace server.Controllers
             Account account = (Account)HttpContext.Items["Account"];
             Market market = itprojectContext.Market.SingleOrDefault(m => m.Id == account.Id);
             market.Products.Add(product);
+            itprojectContext.SaveChanges();
+            return true;
+        }
+
+        [Authorize]
+        [HttpPost("deleteProduct")]
+        public bool DeleteProduct([FromBody] Product product){
+            if (product == null)
+                return false;
+            Account account = (Account)HttpContext.Items["Account"];
+            Market market = itprojectContext.Market.SingleOrDefault(m => m.Id == account.Id);
+            market.Products.Remove(product); 
+            itprojectContext.SaveChanges();
             return true;
         }
     }

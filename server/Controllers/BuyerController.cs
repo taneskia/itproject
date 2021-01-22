@@ -11,7 +11,6 @@ namespace server.Controllers
     [ApiController]
     public class BuyerController : BaseController
     {
-
         [HttpGet]
         [Authorize]
         public string test()

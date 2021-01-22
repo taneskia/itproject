@@ -129,7 +129,8 @@ namespace server.Migrations
                 columns: table => new
                 {
                     ProductID = table.Column<int>(nullable: false),
-                    OrderID = table.Column<int>(nullable: false)
+                    OrderID = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

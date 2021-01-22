@@ -131,6 +131,9 @@ namespace server.Migrations
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductID", "OrderID");
 
                     b.HasIndex("OrderID");
