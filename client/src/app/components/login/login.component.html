@@ -1,28 +1,58 @@
 <div class="bg p-3">
-  <button type="button" class="btn btn-light" [routerLink]="['']">
-    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-return-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
-    </svg>
-  </button>
-  <h3 class="text-center mb-5">Member Login</h3>
+  <div class="container-fluid align-items-center my-3">
+    <div class="row align-items-center">
+      <div class="col-3">
+        <button type="button" class="btn btn-light" [routerLink]="['']">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-return-left" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
+          </svg>
+        </button>
+      </div>
+      <div class="col">
+        <h3 class="text-center">Member Login</h3>
+      </div>
+      <div class="col-3">
+        <div class="d-flex align-items-center">
+          <small id="registerHelp" class="form-text text-muted mr-3">Don't have an account?</small>
+          <button class="btn btn-outline-info btn-sm flex-fill" [routerLink]="['/register']">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="dialog d-flex justify-content-center align-self-center flex-column p-5">
+    <div class="alert alert-danger text-center" role="alert" *ngIf="showAlert">
+      There has been a problem logging you in. Please try again!
+    </div>
+    <div class="alert alert-danger text-center" role="alert" *ngIf="queryParams === '1'">
+      Please log in to view products!
+    </div>
     <div class="row align-items-center">
       <div class="col">
         <img src="https://img.icons8.com/bubbles/344/private-account-female.png" alt="Login Image" />
       </div>
       <div class="col">
-        <form [formGroup]="loginForm" id="login-form" (ngSubmit)="login()">
+        <form ngNativeValidate [formGroup]="loginForm" class="was-validation" id="login-form" (keydown.enter)="login()"
+          (ngSubmit)="login()">
           <div class="form-group">
             <label for="emailControl">Email address</label>
-            <input formControlName="email" type="email" class="form-control" id="emailControl" aria-describedby="emailHelp" placeholder="Enter email">
+            <input formControlName="email" type="email" class="form-control" id="emailControl"
+              aria-describedby="emailHelp" placeholder="Enter email" required>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
             <label for="passwordControl">Password</label>
-            <input formControlName="password" type="password" class="form-control" id="passwordControl" placeholder="Password">
+            <input formControlName="password" type="password" class="form-control"
+              [ngClass]="{'is-invalid': this.loginForm.get('password').invalid && this.loginForm.get('password').touched}"
+              id="passwordControl" placeholder="Password" required>
+            <div class="invalid-feedback">
+              Must be at least 6 characters long
+            </div>
           </div>
-          <div class="d-flex justify-content-end mt-4">
-            <button type="submit" class="btn btn-success btn-block">Log In</button>
+          <div class="d-flex align-items-center">
+            <button type="submit" class="btn btn-success flex-fill">Log In</button>
+            <div class="spinner-border mx-3" role="status" *ngIf="showSpinner && !showAlert"></div>
           </div>
         </form>
       </div>

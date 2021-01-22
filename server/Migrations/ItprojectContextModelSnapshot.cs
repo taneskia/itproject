@@ -72,7 +72,7 @@ namespace server.Migrations
                     b.Property<int>("BuyerID")
                         .HasColumnType("int");
 
-                    b.Property<int>("FreelancerID")
+                    b.Property<int?>("FreelancerID")
                         .HasColumnType("int");
 
                     b.HasKey("OrderID", "BuyerID", "FreelancerID");

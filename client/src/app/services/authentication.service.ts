@@ -1,98 +1,100 @@
-import {User} from '../models/user.model';
-import {StorageService} from "ngx-webstorage-service";
-import {catchError, map} from "rxjs/operators";
-import {UtilitiesService} from "../helpers/utilities.service";
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Inject, Injectable, InjectionToken} from '@angular/core';
-import {BehaviorSubject, Observable, of, throwError} from "rxjs";
+import { User } from '../models/user.model';
+import { StorageService } from 'ngx-webstorage-service';
+import { catchError, map } from 'rxjs/operators';
+import { UtilitiesService } from '../helpers/utilities.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { RegisterRequest } from '../models/register-request.model';
 import { AuthenticateRequest } from '../models/authenticate-request.model';
 
 const STORAGE_KEY = 'current-user';
-export const USER_SERVICE_STORAGE = new InjectionToken<StorageService>('USER_SERVICE_STORAGE');
+export const USER_SERVICE_STORAGE = new InjectionToken<StorageService>(
+  'USER_SERVICE_STORAGE'
+);
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
+  public loggedInUser$: Observable<User>;
+  private loggedInUserSubject: BehaviorSubject<User>;
 
-    headers = new HttpHeaders({
-        'Content-Type': 'application/json'
-    });
+  constructor(
+    private http: HttpClient,
+    private utils: UtilitiesService,
+    @Inject(USER_SERVICE_STORAGE) private storage: StorageService
+  ) {
+    this.loggedInUserSubject = new BehaviorSubject<User>(
+      this.getUserFromStorage()
+    );
+    this.loggedInUser$ = this.loggedInUserSubject.asObservable();
+  }
 
-    public loggedInUser$: Observable<User>;
-    private loggedInUserSubject: BehaviorSubject<User>;
+  public setLoggedUser(loggedUser: User): void {
+    this.storage.set(STORAGE_KEY, loggedUser);
+    this.loggedInUserSubject.next(this.getUserFromStorage());
+  }
 
-    constructor(private http: HttpClient,
-                private utils: UtilitiesService,
-                @Inject(USER_SERVICE_STORAGE) private storage: StorageService) {
-        this.loggedInUserSubject = new BehaviorSubject<User>(this.getUserFromStorage());
-        this.loggedInUser$ = this.loggedInUserSubject.asObservable();
-    }
+  public getLoggedUser(): User {
+    return this.loggedInUserSubject.value;
+  }
 
-    public setLoggedUser(loggedUser: User): void {
-        this.storage.set(STORAGE_KEY, loggedUser);
-        this.loggedInUserSubject.next(this.getUserFromStorage());
-    }
+  public getToken() {
+    return this.storage.get(STORAGE_KEY) !== null
+      ? this.storage.get(STORAGE_KEY)['jwtToken']
+      : undefined;
+  }
 
-    public getLoggedUser(): User {
-        return this.loggedInUserSubject.value;
-    }
+  validateSession(): Observable<any> {
+    return this.http.get<any>(this.utils.getAuthApi('validate-session')).pipe(
+      map((res) => {
+        return res;
+      }),
+      catchError((error) => {
+        return of(error);
+      })
+    );
+  }
 
-    validateSession(): Observable<any> {
-        return this.http.get<any>(
-            this.utils.getAuthApi("validate-session")
-        ).pipe(
-            map(res => {
-                return res;
-            }),
-            catchError(error => {
-                return of(error);
-            })
-        );
-    }
+  register(req: RegisterRequest): Observable<any> {
+    return this.authenticate(req, 'register');
+  }
 
-    register(req: RegisterRequest): Observable<any> {
-        return this.authenticate(req, "register");
-    }
+  login(req: AuthenticateRequest): Observable<any> {
+    return this.authenticate(req, 'authenticate');
+  }
 
-    login(req: AuthenticateRequest): Observable<any> {
-        return this.authenticate(req, "authenticate");
-    }
+  logout() { //: Observable<any>
+    this.setLoggedUser(null);
 
-    logout() //: Observable<any> 
-    {
-        this.setLoggedUser(null);
-        
-        // TODO: Log out of backend
+    // TODO: Log out of backend
 
-        // return this.http.get<any>(
-        //     this.utils.getAuthApi("logout")
-        // ).pipe(
-        //     map(res => {
-        //         return res;
-        //     }),
-        //     catchError(error => {
-        //         return of(error);
-        //     })
-        // );
-    }
+    // return this.http.get<any>(
+    //     this.utils.getAuthApi("logout")
+    // ).pipe(
+    //     map(res => {
+    //         return res;
+    //     }),
+    //     catchError(error => {
+    //         return of(error);
+    //     })
+    // );
+  }
 
-    private authenticate(req: any, url: string) {
-        return this.http.post(
-            this.utils.getAuthApi(url), JSON.stringify(req), {headers: this.headers}
-        ).pipe(
-            map(res => {
-                return res;
-            }),
-            catchError(err => {
-                return throwError(err);
-            })
-        );
-    }
+  private authenticate(req: any, url: string) {
+    return this.http.post(this.utils.getAuthApi(url), JSON.stringify(req)).pipe(
+      map((res) => {
+        return res;
+      }),
+      catchError((err) => {
+        return throwError(err);
+      })
+    );
+  }
 
-    private getUserFromStorage(): User {
-        const currentUser: User = this.storage.get(STORAGE_KEY) || null;
-        return currentUser;
-    }
+  private getUserFromStorage(): User {
+    const currentUser: User = this.storage.get(STORAGE_KEY) || null;
+    return currentUser;
+  }
 }

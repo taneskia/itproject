@@ -9,8 +9,8 @@ using server.Models;
 namespace server.Migrations
 {
     [DbContext(typeof(ItprojectContext))]
-    [Migration("20201225105150_initial")]
-    partial class initial
+    [Migration("20201225155729_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,7 +74,7 @@ namespace server.Migrations
                     b.Property<int>("BuyerID")
                         .HasColumnType("int");
 
-                    b.Property<int>("FreelancerID")
+                    b.Property<int?>("FreelancerID")
                         .HasColumnType("int");
 
                     b.HasKey("OrderID", "BuyerID", "FreelancerID");

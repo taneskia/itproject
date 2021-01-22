@@ -19,7 +19,7 @@ namespace server
 {
     public class Startup
     {
-        public IConfiguration Configuration {get;}
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -35,7 +35,7 @@ namespace server
             services.AddSwaggerGen();
 
             // configure strongly typed settings object
-           // services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            // services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             // configure DI for application services
             services.AddScoped<IAccountService, AccountService>();

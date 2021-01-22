@@ -19,7 +19,7 @@ namespace server.Middleware
         public JwtMiddleware(RequestDelegate next)
         {
             _next = next;
-           // _appSettings = appSettings.Value;
+            // _appSettings = appSettings.Value;
         }
 
         public async Task Invoke(HttpContext context, ItprojectContext dataContext)
@@ -54,7 +54,7 @@ namespace server.Middleware
                 // attach account to context on successful jwt validation
                 context.Items["Account"] = await dataContext.Accounts.FindAsync(accountId);
             }
-            catch 
+            catch
             {
                 // do nothing if jwt validation fails
                 // account is not attached to context so request won't have access to secure routes

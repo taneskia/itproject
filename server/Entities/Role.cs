@@ -3,9 +3,8 @@ namespace server.Entities
     public enum Role
     {
         Admin,
-        User,
-        Market,
+        Buyer,
         Freelancer,
-        Buyer
+        Market
     }
 }

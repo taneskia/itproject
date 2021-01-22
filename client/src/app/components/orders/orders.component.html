@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="d-flex justify-content-center align-self-center flex-column pt-5 px-5 mx-5 mt-3">
+  <h3>My Orders</h3>
+  <hr />
+  <div class="accordion mb-5" id="orderAccordion">
+    <div class="card" *ngFor="let order of orders; let i = index">
+      <div class="card-header row align-items-center" id="heading-{{i}}">
+        <h2 class="mb-0 d-flex col-5">
+          <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapse-' + i"
+            aria-expanded="false" [attr.aria-controls]="'collapse-' + i">
+            Order ID: <span class="ml-3">{{order.ID}}</span>
+          </button>
+        </h2>
+        <span class="col-5">Order Status: <span class="font-weight-bold ml-3">{{states[order.OrderState]}}</span></span>
+        <span class="col-2">Total Price: <span class="font-weight-bold ml-3">${{totalOrderPrice(order)}}</span></span>
+      </div>
+      <div id="collapse-{{i}}" class="collapse mx-3 my-1" [attr.aria-labelledby]="'heading-' + i"
+        data-parent="#orderAccordion">
+        <div class="my-2 p-3 border shadow-sm rounded d-flex align-items-center"
+          *ngFor="let item of order.ProductOrder">
+          <div class="row justify-content-between align-items-center w-100 px-5">
+            <div class="col-3 ml-5">
+              <div class="image-container my-auto d-flex align-self-center mr-5">
+                <img src="{{item.Image}}" alt="Cart Item" class="align-self-center m-0" />
+              </div>
+            </div>
+            <div class="col-3">
+              <p class="text-center m-0">{{item.Name}}</p>
+            </div>
+            <div class="col-3">
+              <p class="text-center m-0">Amount: {{item.Amount}}</p>
+            </div>
+            <div class="col-2">
+              <p class="text-center m-0">US ${{(item.Price * item.Amount).toFixed(2)}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="my-3 p-3 border shadow-sm rounded d-flex align-items-center">
+        <div class="row justify-content-between align-items-center w-100 px-5">
+          <div class="col-3 ml-5">
+            <div class="my-auto d-flex align-self-center">
+              <span>Delivery Price:</span>
+            </div>
+          </div>
+          <div class="col-6 m-0 p-0"></div>
+          <div class="col-2 m-0 p-0">
+            <p class="text-center m-0">US ${{shippingPrice(order)}}</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
