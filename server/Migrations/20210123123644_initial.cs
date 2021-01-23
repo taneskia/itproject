@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace server.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -97,25 +97,27 @@ namespace server.Migrations
                 name: "AccountOrders",
                 columns: table => new
                 {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     OrderID = table.Column<int>(nullable: false),
-                    BuyerID = table.Column<int>(nullable: false),
-                    FreelancerID = table.Column<int>(nullable: false)
+                    BuyerID = table.Column<int>(nullable: true),
+                    FreelancerID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccountOrders", x => new { x.OrderID, x.BuyerID, x.FreelancerID });
+                    table.PrimaryKey("PK_AccountOrders", x => x.ID);
                     table.ForeignKey(
                         name: "FK_AccountOrders_Accounts_BuyerID",
                         column: x => x.BuyerID,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AccountOrders_Accounts_FreelancerID",
                         column: x => x.FreelancerID,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AccountOrders_Order_OrderID",
                         column: x => x.OrderID,
@@ -158,6 +160,11 @@ namespace server.Migrations
                 name: "IX_AccountOrders_FreelancerID",
                 table: "AccountOrders",
                 column: "FreelancerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AccountOrders_OrderID",
+                table: "AccountOrders",
+                column: "OrderID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_RefreshTokens_AccountId",

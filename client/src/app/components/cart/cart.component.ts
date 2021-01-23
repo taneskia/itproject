@@ -50,7 +50,7 @@ export class CartComponent implements OnInit {
     };
 
     // TODO: Subscribe after added Order functionality to backend
-    this.orderService.addOrder(order);//.subscribe();
+    this.orderService.addOrder(order).subscribe();
 
     this.productService.emptyCart();
     this.cart = this.productService.getCart();

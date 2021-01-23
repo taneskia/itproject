@@ -82,15 +82,15 @@ export class OrderService {
 
     // TODO: Connect Order to backend
 
-    // return this.http
-    //   .post(this.utils.getBuyerApi('buy'), JSON.stringify(order))
-    //   .pipe(
-    //     map((res) => {
-    //       return res;
-    //     }),
-    //     catchError((err) => {
-    //       return throwError(err);
-    //     })
-    //   );
+    return this.http
+      .post(this.utils.getBuyerApi('buy'), JSON.stringify(order.ProductOrder))
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        catchError((err) => {
+          return throwError(err);
+        })
+      );
   }
 }

@@ -51,6 +51,7 @@ export class RegisterComponent implements OnInit {
         () => {
           this.showAlert = false;
           this.success = true;
+          this.showSpinner = false;
         },
         () => {
           this.showAlert = true;

@@ -35,6 +35,11 @@ namespace server.Controllers
         [Authorize]
         public void MakeOrder([FromBody] List<FrontendProducts> frontendProducts)
         {
+
+            foreach(FrontendProducts fp in frontendProducts)
+                System.Console.WriteLine(fp.ToString());
+
+            
             Account account = (Account)HttpContext.Items["Account"];
             Buyer buyer = itprojectContext.Buyer.SingleOrDefault(m => m.Id == account.Id);
 
@@ -48,15 +53,19 @@ namespace server.Controllers
                 // TODO: Add product in database or below line will be null
                 Product product = itprojectContext.Product.SingleOrDefault(m => m.ID == frontendProduct.ID);
 
-                // if(product == null)
-                // {
-                //     product = new Product {
-                //         ID = frontendProduct.ID,
-                //         ImageURL = frontendProduct.Image,
-                //         Name = frontendProduct.Name,
-                //         Price = frontendProduct.Price,
-                //     };
-                // }
+                if(product == null)
+                {
+                    product = new Product {
+                        ID = frontendProduct.ID,
+                        ImageURL = frontendProduct.Image,
+                        Name = frontendProduct.Name,
+                        Price = frontendProduct.Price,
+                    };
+                }
+
+            itprojectContext.Product.Add(product);
+
+            itprojectContext.SaveChanges();
 
                 ProductOrder productOrder = new ProductOrder
                 {
@@ -71,6 +80,7 @@ namespace server.Controllers
                 order.ProductOrder.Add(productOrder);
             }
 
+
             AccountOrder accountOrder = new AccountOrder
             {
                 Buyer = buyer,
@@ -79,13 +89,14 @@ namespace server.Controllers
                 OrderID = order.ID,
                 // TODO: Fix freelancer
                 Freelancer = null,
-                FreelancerID = 2
+                FreelancerID = null
             };
 
             buyer.AccountOrders.Add(accountOrder);
-            itprojectContext.Buyer.Update(buyer);
+           // itprojectContext.Buyer.Update(buyer);
 
             itprojectContext.SaveChanges();
+            
         }
     }
 }

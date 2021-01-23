@@ -19,7 +19,6 @@ namespace server.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProductOrder>().HasKey(po => new { po.ProductID, po.OrderID });
-            modelBuilder.Entity<AccountOrder>().HasKey(ao => new { ao.OrderID, ao.BuyerID, ao.FreelancerID });
         }
     }
 }

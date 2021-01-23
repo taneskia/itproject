@@ -66,20 +66,26 @@ namespace server.Migrations
 
             modelBuilder.Entity("server.Models.AccountOrder", b =>
                 {
-                    b.Property<int>("OrderID")
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("BuyerID")
+                    b.Property<int?>("BuyerID")
                         .HasColumnType("int");
 
                     b.Property<int?>("FreelancerID")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderID", "BuyerID", "FreelancerID");
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
 
                     b.HasIndex("BuyerID");
 
                     b.HasIndex("FreelancerID");
+
+                    b.HasIndex("OrderID");
 
                     b.ToTable("AccountOrders");
                 });
@@ -212,15 +218,11 @@ namespace server.Migrations
                 {
                     b.HasOne("server.Models.Buyer", "Buyer")
                         .WithMany("AccountOrders")
-                        .HasForeignKey("BuyerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BuyerID");
 
                     b.HasOne("server.Models.Freelancer", "Freelancer")
                         .WithMany("AccountOrders")
-                        .HasForeignKey("FreelancerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FreelancerID");
 
                     b.HasOne("server.Models.Order", "Order")
                         .WithMany()
