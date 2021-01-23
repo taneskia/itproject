@@ -97,15 +97,14 @@ namespace server.Migrations
                 name: "AccountOrders",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    OrderID = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    OrderID = table.Column<int>(nullable: false),
                     BuyerID = table.Column<int>(nullable: true),
                     FreelancerID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccountOrders", x => x.ID);
+                    table.PrimaryKey("PK_AccountOrders", x => x.OrderID);
                     table.ForeignKey(
                         name: "FK_AccountOrders_Accounts_BuyerID",
                         column: x => x.BuyerID,
@@ -160,11 +159,6 @@ namespace server.Migrations
                 name: "IX_AccountOrders_FreelancerID",
                 table: "AccountOrders",
                 column: "FreelancerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AccountOrders_OrderID",
-                table: "AccountOrders",
-                column: "OrderID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_RefreshTokens_AccountId",

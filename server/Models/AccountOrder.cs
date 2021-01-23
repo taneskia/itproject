@@ -9,16 +9,16 @@ namespace server.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-        [Column(Order = 0)]
+        [Column(Order = 1)]
         public int OrderID { get; set; }
+        [ForeignKey("OrderID")]
         public Order Order { get; set; }
 
-        [Column(Order = 1)]
+        [Column(Order = 2)]
         public int? BuyerID { get; set; }
         public virtual Buyer Buyer { get; set; }        
   
-        [Column(Order = 2)]
+        [Column(Order = 3)]
         public int? FreelancerID { get; set; }    
         public virtual Freelancer Freelancer { get; set; }
     }

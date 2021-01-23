@@ -66,7 +66,7 @@ namespace server.Migrations
 
             modelBuilder.Entity("server.Models.AccountOrder", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -76,16 +76,11 @@ namespace server.Migrations
                     b.Property<int?>("FreelancerID")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
+                    b.HasKey("OrderID");
 
                     b.HasIndex("BuyerID");
 
                     b.HasIndex("FreelancerID");
-
-                    b.HasIndex("OrderID");
 
                     b.ToTable("AccountOrders");
                 });
