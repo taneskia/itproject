@@ -1,12 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata;
 using server.Entities;
 using server.Models;
 using server.Models.Helpers;
@@ -34,8 +29,7 @@ namespace server.Controllers
         [HttpPost("buy")]
         [Authorize]
         public void MakeOrder([FromBody] List<FrontendProducts> frontendProducts)
-        {
-
+        {            
             foreach(FrontendProducts fp in frontendProducts)
                 System.Console.WriteLine(fp.ToString());
 
@@ -61,11 +55,10 @@ namespace server.Controllers
                         Name = frontendProduct.Name,
                         Price = frontendProduct.Price,
                     };
+                    
+                    itprojectContext.Product.Add(product);
+                    itprojectContext.SaveChanges();
                 }
-
-            itprojectContext.Product.Add(product);
-
-            itprojectContext.SaveChanges();
 
                 ProductOrder productOrder = new ProductOrder
                 {
@@ -96,7 +89,6 @@ namespace server.Controllers
            // itprojectContext.Buyer.Update(buyer);
 
             itprojectContext.SaveChanges();
-            
         }
     }
 }

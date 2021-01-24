@@ -29,7 +29,7 @@ namespace server.Controllers
         public ActionResult<AuthenticateResponse> Authenticate(AuthenticateRequest model)
         {
             var response = _accountService.Authenticate(model, ipAddress());
-            setTokenCookie(response.RefreshToken);
+            //setTokenCookie(response.RefreshToken);
             return Ok(response);
         }
 
@@ -38,16 +38,15 @@ namespace server.Controllers
         {
             var refreshToken = Request.Cookies["refreshToken"];
             var response = _accountService.RefreshToken(refreshToken, ipAddress());
-            setTokenCookie(response.RefreshToken);
             return Ok(response);
         }
 
         [Authorize]
-        [HttpPost("revoke-token")]
-        public IActionResult RevokeToken(RevokeTokenRequest model)
+        [HttpGet("revoke-token")]
+        public IActionResult RevokeToken()
         {
             // accept token from request body or cookie
-            var token = model.Token ?? Request.Cookies["refreshToken"];
+            var token = Request.Cookies["refreshToken"];
 
             if (string.IsNullOrEmpty(token))
                 return BadRequest(new { message = "Token is required" });

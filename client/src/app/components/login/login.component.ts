@@ -51,7 +51,9 @@ export class LoginComponent implements OnInit {
           this.authService.setLoggedUser(res);
           this.router.navigateByUrl('').then();
         },
-        () => (this.showAlert = true)
+        () => {
+          (this.showAlert = true)
+        }
       );
     }
   }

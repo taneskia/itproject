@@ -1,5 +1,5 @@
 using System;
-using System.Text.Json.Serialization;
+//using System.Text.Json.Serialization;
 
 namespace server.Models.Accounts
 {
@@ -13,7 +13,7 @@ namespace server.Models.Accounts
         public DateTime? Updated { get; set; }
         public string JwtToken { get; set; }
 
-        [JsonIgnore] // refresh token is returned in http only cookie
+        //[JsonIgnore] // refresh token is returned in http only cookie
         public string RefreshToken { get; set; }
     }
 }

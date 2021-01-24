@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'clients';
+
+  constructor(private authService: AuthenticationService) {
+    if (this.authService.getLoggedUser() != null) {
+      this.authService.validateToken().subscribe(
+        (res) => this.authService.setLoggedUser(res),
+        () => this.authService.logout()
+      );
+    }
+  }
 }
