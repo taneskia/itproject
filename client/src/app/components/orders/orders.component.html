@@ -18,26 +18,29 @@
         data-parent="#orderAccordion">
         <div class="my-2 p-3 border shadow-sm rounded d-flex align-items-center"
           *ngFor="let item of order.ProductOrder">
-          <div class="row justify-content-between align-items-center w-100 px-5">
-            <div class="col-3 ml-5">
+          <div class="row mx-auto align-items-center w-100 px-3">
+            <div class="col">
               <div class="image-container my-auto d-flex align-self-center mr-5">
                 <img src="{{item.Image}}" alt="Cart Item" class="align-self-center m-0" />
               </div>
             </div>
-            <div class="col-3">
-              <p class="text-center m-0">{{item.Name}}</p>
+            <div class="col">
+              <p class="text-left m-0">{{item.Name}}</p>
             </div>
-            <div class="col-3">
-              <p class="text-center m-0">Amount: {{item.Amount}}</p>
+            <div class="col">
+              <p class="text-left m-0">Amount: {{item.Amount}}</p>
+            </div>
+            <div class="col">
+              <p class="text-left m-0">Market: {{item.Market.Name}}</p>
             </div>
             <div class="col-2">
-              <p class="text-center m-0">US ${{(item.Price * item.Amount).toFixed(2)}}</p>
+              <p class="text-left m-0">US ${{(item.Price * item.Amount).toFixed(2)}}</p>
             </div>
           </div>
         </div>
         <div class="my-3 p-3 border shadow-sm rounded d-flex align-items-center">
         <div class="row justify-content-between align-items-center w-100 px-5">
-          <div class="col-3 ml-5">
+          <div class="col">
             <div class="my-auto d-flex align-self-center">
               <span>Delivery Price:</span>
             </div>

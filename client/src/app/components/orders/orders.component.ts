@@ -19,8 +19,8 @@ export class OrdersComponent implements OnInit {
     private router: Router,
     private orderService: OrderService
   ) {
-    if (!this.authService.getLoggedUser())
-      router.navigateByUrl('/login');
+    // if (!this.authService.getLoggedUser())
+    //   router.navigateByUrl('/login');
   }
 
   ngOnInit(): void {

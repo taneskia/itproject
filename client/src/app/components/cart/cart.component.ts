@@ -50,7 +50,6 @@ export class CartComponent implements OnInit {
       Address: 'Kire Gavriloski 26'
     };
 
-    // TODO: Subscribe after added Order functionality to backend
     this.orderService.addOrder(order).subscribe();
 
     this.productService.emptyCart();

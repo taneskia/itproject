@@ -85,9 +85,9 @@ namespace server.Services
             refreshToken.Revoked = DateTime.UtcNow;
             refreshToken.RevokedByIp = ipAddress;
             refreshToken.ReplacedByToken = newRefreshToken.Token;
-            account.RefreshTokens.Add(newRefreshToken);
 
-            removeOldRefreshTokens(account);
+            account.RefreshTokens.Clear();
+            account.RefreshTokens.Add(newRefreshToken);
             
             _context.Update(account);
             _context.SaveChanges();
@@ -121,8 +121,6 @@ namespace server.Services
             if (role == Role.Market)
             {
                 Market market = _mapper.Map<Market>(model);
-                if (model.ImageUrl != null)
-                    market.ImageUrl = model.ImageUrl;
                 _context.Market.Add(market);
                 account = market;
             }

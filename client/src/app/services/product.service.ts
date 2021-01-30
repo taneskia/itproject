@@ -18,13 +18,19 @@ export class ProductService {
       Price: 1.23,
       Amount: 1,
       Image: 'https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG.jpg',
+      Market: {
+        Name: "Tinex",
+      }
     },
     {
       ID: 2,
       Name: 'Apples',
       Price: 1.5,
       Amount: 1,
-      Image: 'https://www.macdentalcare.com/pub/photo/2014-09-apple.jpg',
+      Image: 'https://www.macdentalcare.com/pub/photo/2014-09-apple.jpg', 
+      Market: {
+        Name: "Futura",
+      }
     },
     {
       ID: 3,
@@ -32,7 +38,11 @@ export class ProductService {
       Price: 1.87,
       Amount: 1,
       Image:
-        'https://produits.bienmanger.com/38345-0w470h470_Organic_Navelate_Oranges.jpg',
+        'https://produits.bienmanger.com/38345-0w470h470_Organic_Navelate_Oranges.jpg', 
+      Market: {
+        Name: "Tinex",
+      }
+
     },
     {
       ID: 4,
@@ -40,14 +50,22 @@ export class ProductService {
       Price: 1.23,
       Amount: 1,
       Image:
-        'https://specials-images.forbesimg.com/imageserve/5f42b5182138dffac9bf05b7/960x0.jpg',
+        'https://specials-images.forbesimg.com/imageserve/5f42b5182138dffac9bf05b7/960x0.jpg', 
+      Market: {
+        Name: "Kam",
+      }
+
     },
     {
       ID: 5,
       Name: 'Peaches',
       Price: 1.23,
       Amount: 1,
-      Image: 'https://images.heb.com/is/image/HEBGrocery/000513694',
+      Image: 'https://images.heb.com/is/image/HEBGrocery/000513694', 
+      Market: {
+        Name: "Stokomak",
+      }
+
     },
   ];
 

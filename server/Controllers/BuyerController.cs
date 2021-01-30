@@ -73,7 +73,6 @@ namespace server.Controllers
                 order.ProductOrder.Add(productOrder);
             }
 
-
             AccountOrder accountOrder = new AccountOrder
             {
                 Buyer = buyer,
