@@ -46,7 +46,8 @@ export class CartComponent implements OnInit {
   makeOrder() {
     let order: Order = {
       OrderState: OrderState.Ordered,
-      ProductOrder: this.cart
+      ProductOrder: this.cart,
+      Address: 'Kire Gavriloski 26'
     };
 
     // TODO: Subscribe after added Order functionality to backend

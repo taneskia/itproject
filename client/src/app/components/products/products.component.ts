@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
     private router: Router
   ) {
     if (!this.authService.getLoggedUser())
-      router.navigateByUrl('/login?auth=1');
+      console.log('zdr'); //router.navigateByUrl('/login?auth=1');
   }
 
   ngOnInit(): void {

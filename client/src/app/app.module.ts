@@ -17,6 +17,8 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FreelancerComponent } from './components/freelancer/freelancer.component';
+import { MarketComponent } from './components/market/market.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     OrdersComponent,
     ProductsComponent,
     RegisterComponent,
+    FreelancerComponent,
+    MarketComponent,
   ],
   imports: [
     FormsModule,

@@ -1,0 +1,124 @@
+<app-header></app-header>
+<div class="d-flex justify-content-center align-self-center pt-5 px-5 mx-5 mt-3">
+    <div class="col-sm-6">
+        <h3 class="my-3">Orders</h3>
+        <hr/>
+        <div class="accordion" id="Orders">
+            <div class="card w-100"  *ngFor="let order of orders; let i = index">
+                <div class="card-header row align-items-center">
+                    <div class="d-flex justify-content-between col-11" id="order-{{i}}" data-toggle="collapse" 
+                    [attr.data-target]="'#orderCollapse-' + i" aria-expanded="false" [attr.aria-controls]="'orderCollapse-' + i">
+                        <span class="col-3">
+                            Order No: <span>{{order.ID}}</span>
+                        </span>
+                        <span class="col-6">
+                            Address: <span>{{order.Address}}</span>
+                        </span>
+                        <span class="col-3">
+                            Total price: $<span>{{totalOrderPrice(order)}}</span>
+                        </span>
+                    </div>
+                    <button class="btn btn-outline-success col-1">
+                        ⯈
+                    </button>
+                </div>
+                <div id="orderCollapse-{{i}}" class="collapse" [attr.aria-labelledby]="'order-' + i" data-parent="#Orders">
+                    <div class="card-body mx-3 my-1">
+                        <div class="my-2 p-3 border shadow-sm rounded d-flex align-items-center" *ngFor="let item of order.ProductOrder">
+                            <div class="row justify-content-between align-items-center w-100"> <!-- OVDE IMASE px-5  -->
+                                <div class="col-3 ml-5">
+                                    <div class="image-container my-auto d-flex align-self-center"> <!-- OVDE IMASE mr-5  -->
+                                        <img src="{{item.Image}}" alt="Cart Item" class="align-self-center m-0" />
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <p class="text-center m-0">{{item.Name}}</p>
+                                </div>
+                                <div class="col-3">
+                                    <p class="text-center m-0">Amount: {{item.Amount}}</p>
+                                </div>
+                                <div class="col-2">
+                                    <p class="text-center m-0">US ${{(item.Price * item.Amount).toFixed(2)}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-3 p-3 border shadow-sm rounded d-flex align-items-center">
+                            <div class="row justify-content-between align-items-center w-100"> <!-- OVDE IMASE px-5  -->
+                                <div class="col-3 ml-5">
+                                    <div class="my-auto d-flex align-self-center">
+                                        <span>Delivery Price:</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 m-0 p-0"></div>
+                                <div class="col-2 m-0 p-0">
+                                    <p class="text-center m-0">US ${{shippingPrice(order)}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <h3 class="my-3">Accepted Orders</h3>
+        <hr/>
+        <div class="accordion" id="acceptedOrders">
+            <div class="card w-100"  *ngFor="let order of acceptedOrders; let i = index">
+                <div class="card-header row align-items-center">
+                    <div class="d-flex justify-content-between col-9" id="acceptedOrder-{{i}}" data-toggle="collapse" 
+                    [attr.data-target]="'#acceptedOrderCollapse-' + i" aria-expanded="false" [attr.aria-controls]="'acceptedOrderCollapse-' + i">
+                        <span class="col-3">
+                            Order No: <span>{{order.ID}}</span>
+                        </span>
+                        <span class="col-6">
+                            Order State: <span>{{states[order.OrderState]}}</span>
+                        </span>
+                    </div>
+                    <button class="btn btn-outline-warning col-3">
+                        {{states[order.OrderState + 1]}}
+                    </button>
+                </div>
+                <div id="acceptedOrderCollapse-{{i}}" class="collapse" [attr.aria-labelledby]="'acceptedOrder-' + i" data-parent="#acceptedOrders">
+                    <div class="card-body mx-3 my-1">
+                        <div class="my-2 p-3">
+                            <b>Address: </b> <span>{{order.Address}}</span>
+                        </div>
+                        <div class="my-2 p-3 border shadow-sm rounded d-flex align-items-center" *ngFor="let item of order.ProductOrder">
+                            <div class="row justify-content-between align-items-center w-100"> <!-- OVDE IMASE px-5  -->
+                                <div class="col-3 ml-5">
+                                    <div class="image-container my-auto d-flex align-self-center"> <!-- OVDE IMASE mr-5  -->
+                                        <img src="{{item.Image}}" alt="Cart Item" class="align-self-center m-0" />
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <p class="text-center m-0">{{item.Name}}</p>
+                                </div>
+                                <div class="col-3">
+                                    <p class="text-center m-0">Amount: {{item.Amount}}</p>
+                                </div>
+                                <div class="col-2">
+                                    <p class="text-center m-0">US ${{(item.Price * item.Amount).toFixed(2)}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-3 p-3 border shadow-sm rounded d-flex align-items-center">
+                            <div class="row justify-content-between align-items-center w-100"> <!-- OVDE IMASE px-5  -->
+                                <div class="col-3 ml-5">
+                                    <div class="my-auto d-flex align-self-center">
+                                        <span>Delivery Price:</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 m-0 p-0"></div>
+                                <div class="col-2 m-0 p-0">
+                                    <p class="text-center m-0">US ${{shippingPrice(order)}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

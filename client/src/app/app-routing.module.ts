@@ -6,6 +6,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { FreelancerComponent } from './components/freelancer/freelancer.component';
+import { MarketComponent } from './components/market/market.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent,
+  },
+  {
+    path: 'freelancer',
+    component: FreelancerComponent,
+  },
+  {
+    path: 'market',
+    component: MarketComponent,
   },
 ];
 

@@ -84,4 +84,27 @@ export class ProductService {
   public emptyCart() {
     this.cart = [];
   }
+
+  public addMarketProduct(product: Product): Observable<any> {
+    return this.http.post(this.utils.getMarketApi("AddProduct"), JSON.stringify(product)).pipe(
+      map((res) => {
+        return res;
+      }),
+      catchError((err) => {
+        return throwError(err);
+      })
+    );
+  }
+
+  public deleteMarketProduct(product: Product): Observable<any> {
+    this.products.splice(this.products.indexOf(product), 1);
+    return this.http.delete(this.utils.getMarketApi("DeleteProduct/" + product.ID)).pipe(
+      map((res) => {
+        return res;
+      }),
+      catchError((err) => {
+        return throwError(err);
+      })
+    );
+  }
 }

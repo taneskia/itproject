@@ -10,11 +10,15 @@ export class UtilitiesService {
 
   private authAPI = this.baseURL + '/Accounts/';
   private buyerAPI = this.baseURL + '/Buyer/';
+  private marketAPI = this.baseURL + '/Market/';
 
   getAuthApi(path: string = ''): string {
     return this.authAPI + path;
   }
   getBuyerApi(path: string = ''): string {
     return this.buyerAPI + path;
+  }
+  getMarketApi(path: string = ''): string {
+    return this.marketAPI + path;
   }
 }
