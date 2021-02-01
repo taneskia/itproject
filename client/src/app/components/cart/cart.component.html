@@ -1,87 +1,89 @@
 <app-header></app-header>
 <div class="d-flex justify-content-center align-self-center flex-column p-5 mx-5">
-  <div class="row justify-content-between pt-3">
-    <div class="col-8 h-100 shadow-sm p-3 rounded">
-      <h3>Shopping Cart</h3>
-      <hr />
-      <p class="text-center" *ngIf="this.cart.length === 0">Your cart is empty</p>
-      <div *ngFor="let item of cart" class="my-3 p-3 border shadow-sm rounded d-flex align-items-center">
-        <div class="item-description w-100">
-          <div class="row justify-content-between align-items-center">
-            <div class="col-1">
-              <div class="image-container my-auto d-flex align-self-center mr-5">
-                <img src="{{item.Image}}" alt="Cart Item" class="align-self-center" />
-              </div>
+    <div class="row justify-content-between pt-3">
+        <div class="col-8 h-100 shadow-sm p-3 rounded">
+            <h3>Shopping Cart</h3>
+            <hr />
+            <p class="text-center" *ngIf="this.cart.length === 0">Your cart is empty</p>
+            <div *ngFor="let item of cart" class="my-3 p-3 border shadow-sm rounded d-flex align-items-center">
+                <div class="item-description w-100">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-1">
+                            <div class="image-container my-auto d-flex align-self-center mr-5">
+                                <img src="{{item.image}}" alt="Cart Item" class="align-self-center" />
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <p class="text-center">{{item.name}}</p>
+                        </div>
+                        <div class="col-2">
+                            <p>US ${{(item.price * item.amount).toFixed(2)}}</p>
+                        </div>
+                        <div class="col-1">
+                            <button class="btn btn-outline-primary" (click)="decreaseProductAmount(item)">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="col-1">
+                            <p class="text-center">{{item.amount}}</p>
+                        </div>
+                        <div class="col-1">
+                            <button class="btn btn-outline-primary" (click)="increaseProductAmount(item)">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="col-1 mr-2">
+                            <button class="btn btn-link" (click)="deleteProduct(item)">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-3">
-              <p class="text-center">{{item.Name}}</p>
-            </div>
-            <div class="col-2">
-              <p>US ${{(item.Price * item.Amount).toFixed(2)}}</p>
-            </div>
-            <div class="col-1">
-              <button class="btn btn-outline-primary" (click)="decreaseProductAmount(item)">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                </svg>
-              </button>
-            </div>
-            <div class="col-1">
-              <p class="text-center">{{item.Amount}}</p>
-            </div>
-            <div class="col-1">
-              <button class="btn btn-outline-primary" (click)="increaseProductAmount(item)">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd"
-                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                </svg>
-              </button>
-            </div>
-            <div class="col-1 mr-2">
-              <button class="btn btn-link" (click)="deleteProduct(item)">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                  <path fill-rule="evenodd"
-                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                </svg>
-              </button>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-3 shadow-sm p-3 rounded" *ngIf="this.cart.length > 0">
-      <h4>Order Summary</h4>
-      <div class="d-flex justify-content-between mt-5">
-        <p>Subtotal</p>
-        <p>US ${{calculateSubTotal()}}</p>
-      </div>
-      <div class="d-flex justify-content-between">
-        <p>Shipping</p>
-        <p>US ${{calculateShipping()}}</p>
-      </div>
-      <div class="d-flex justify-content-between mt-4">
-        <p>Total</p>
-        <p>US ${{(+calculateSubTotal() + +calculateShipping()).toFixed(2)}}</p>
-      </div>
-      <button class="btn btn-outline-success w-100" (click)="makeOrder()"  data-toggle="modal" data-target="#makeOrderModal">Buy Now</button>
-    </div>
-  </div>
-  <div class="modal fade" id="makeOrderModal" tabindex="-1" role="dialog" aria-labelledby="makeOrderModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header justify-content-center border-0 my-3">
-          <h5 class="modal-title" id="makeOrderModalLabel">Payment successful. Your order is on its way</h5>
+        <div class="col-3 shadow-sm p-3 rounded" *ngIf="this.cart.length > 0">
+            <h4>Order Summary</h4>
+            <div class="d-flex justify-content-between mt-5">
+                <p>Subtotal</p>
+                <p>US ${{calculateSubTotal()}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>Shipping</p>
+                <p>US ${{calculateShipping()}}</p>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <p>Total</p>
+                <p>US ${{(+calculateSubTotal() + +calculateShipping()).toFixed(2)}}</p>
+            </div>
+            <button class="btn btn-outline-success w-100" (click)="makeOrder()" data-toggle="modal"
+                data-target="#makeOrderModal">Buy Now</button>
         </div>
-        <div class="modal-footer justify-content-end">
-          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
-  </div>
+    <div class="modal fade" id="makeOrderModal" tabindex="-1" role="dialog" aria-labelledby="makeOrderModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center border-0 my-3">
+                    <h5 class="modal-title" id="makeOrderModalLabel">Payment successful. Your order is on its way</h5>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

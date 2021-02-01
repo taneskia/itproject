@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using server.Entities;
 using server.Models;
@@ -24,19 +25,9 @@ namespace server.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<string> HomeTest()
+        public IEnumerable<Market> GetMarkets()
         {
-            //remove this method, testing only
-            return new string[] { "value1", "value2" };
-        }
-
-        [Authorize]
-        [HttpGet("products")]
-        public IEnumerable<Product> Products()
-        {
-            Account account = (Account)HttpContext.Items["Account"];
-            Market market = itprojectContext.Market.SingleOrDefault(m => m.Id == account.Id);
-            return market.Products;
+            return itprojectContext.Market.Include(p => p.Products);
         }
 
         [Authorize]
@@ -48,18 +39,21 @@ namespace server.Controllers
             Account account = (Account)HttpContext.Items["Account"];
             Market market = itprojectContext.Market.SingleOrDefault(m => m.Id == account.Id);
             market.Products.Add(product);
+            itprojectContext.Update(market);
             itprojectContext.SaveChanges();
             return true;
         }
 
         [Authorize]
         [HttpPost("deleteProduct")]
-        public bool DeleteProduct([FromBody] Product product){
+        public bool DeleteProduct([FromBody] Product product)
+        {
             if (product == null)
                 return false;
             Account account = (Account)HttpContext.Items["Account"];
             Market market = itprojectContext.Market.SingleOrDefault(m => m.Id == account.Id);
-            market.Products.Remove(product); 
+            market.Products.Remove(product);
+            itprojectContext.Update(market);
             itprojectContext.SaveChanges();
             return true;
         }

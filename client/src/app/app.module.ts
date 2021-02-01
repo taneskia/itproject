@@ -18,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FreelancerComponent } from './components/freelancer/freelancer.component';
-import { MarketComponent } from './components/market/market.component';
+import { MarketDashboardComponent } from './components/market-dashboard/market-dashboard.component';
+import { MarketsComponent } from './components/markets/markets.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MarketComponent } from './components/market/market.component';
     ProductsComponent,
     RegisterComponent,
     FreelancerComponent,
-    MarketComponent,
+    MarketDashboardComponent,
+    MarketsComponent,
   ],
   imports: [
     FormsModule,
@@ -40,7 +42,7 @@ import { MarketComponent } from './components/market/market.component';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     {
@@ -52,7 +54,7 @@ import { MarketComponent } from './components/market/market.component';
       provide: USER_SERVICE_STORAGE,
       useExisting: LOCAL_STORAGE,
     },
-    CookieService
+    CookieService,
   ],
   bootstrap: [AppComponent],
 })

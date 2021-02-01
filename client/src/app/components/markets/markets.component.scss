@@ -1,0 +1,13 @@
+.image-container {
+  width: auto;
+  height: 60%;
+}
+
+.row::after {
+  content: "";
+  flex: auto;
+}
+
+.custom-fit {
+  min-width: fit-content;
+}

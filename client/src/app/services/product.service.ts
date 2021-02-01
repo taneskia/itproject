@@ -3,126 +3,61 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { UtilitiesService } from '../helpers/utilities.service';
+import { Market } from '../models/market.model';
 import { Product } from '../models/product.model';
+import { MarketService } from './market.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private cart: Product[] = [];
-
-  private products: Product[] = [
-    {
-      ID: 1,
-      Name: 'Bananas',
-      Price: 1.23,
-      Amount: 1,
-      Image: 'https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG.jpg',
-      Market: {
-        Name: "Tinex",
-      }
-    },
-    {
-      ID: 2,
-      Name: 'Apples',
-      Price: 1.5,
-      Amount: 1,
-      Image: 'https://www.macdentalcare.com/pub/photo/2014-09-apple.jpg', 
-      Market: {
-        Name: "Futura",
-      }
-    },
-    {
-      ID: 3,
-      Name: 'Oranges',
-      Price: 1.87,
-      Amount: 1,
-      Image:
-        'https://produits.bienmanger.com/38345-0w470h470_Organic_Navelate_Oranges.jpg', 
-      Market: {
-        Name: "Tinex",
-      }
-
-    },
-    {
-      ID: 4,
-      Name: 'Pears',
-      Price: 1.23,
-      Amount: 1,
-      Image:
-        'https://specials-images.forbesimg.com/imageserve/5f42b5182138dffac9bf05b7/960x0.jpg', 
-      Market: {
-        Name: "Kam",
-      }
-
-    },
-    {
-      ID: 5,
-      Name: 'Peaches',
-      Price: 1.23,
-      Amount: 1,
-      Image: 'https://images.heb.com/is/image/HEBGrocery/000513694', 
-      Market: {
-        Name: "Stokomak",
-      }
-
-    },
-  ];
-
-  constructor(private http: HttpClient, private utils: UtilitiesService) {}
-
-  public getCart() {
-    return this.cart;
-  }
+  constructor(
+    private http: HttpClient,
+    private utils: UtilitiesService,
+    private marketService: MarketService
+  ) {}
 
   public getProducts() {
-    return this.products;
+    return this.marketService.getMarkets();
   }
 
-  public addToCart(product: Product) {
-    this.cart.find((el) => el.ID === product.ID)
-      ? this.increaseProductAmount(product)
-      : this.cart.push(product);
-  }
-
-  decreaseProductAmount(product: Product) {
-    let cartProduct = this.cart.find((x) => x === product);
-
-    if (cartProduct.Amount > 1) cartProduct.Amount--;
-  }
-
-  increaseProductAmount(product: Product) {
-    this.cart.find((x) => x === product).Amount++;
-  }
-
-  public deleteAllFromCart(product: Product) {
-    this.cart = this.cart.filter((item) => item !== product);
-  }
-
-  public emptyCart() {
-    this.cart = [];
+  public getProductsFromDB(): Observable<any> {
+    return this.http.get(this.utils.getProductApi()).pipe(
+      map((res) => {
+        return res;
+      }),
+      catchError((err) => {
+        return throwError(err);
+      })
+    );
   }
 
   public addMarketProduct(product: Product): Observable<any> {
-    return this.http.post(this.utils.getMarketApi("AddProduct"), JSON.stringify(product)).pipe(
-      map((res) => {
-        return res;
-      }),
-      catchError((err) => {
-        return throwError(err);
-      })
-    );
+    return this.http
+      .post(this.utils.getMarketApi('addProduct'), JSON.stringify(product))
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        catchError((err) => {
+          return throwError(err);
+        })
+      );
   }
 
   public deleteMarketProduct(product: Product): Observable<any> {
-    this.products.splice(this.products.indexOf(product), 1);
-    return this.http.delete(this.utils.getMarketApi("DeleteProduct/" + product.ID)).pipe(
-      map((res) => {
-        return res;
-      }),
-      catchError((err) => {
-        return throwError(err);
-      })
-    );
+    return this.http
+      .post(
+        this.utils.getMarketApi('deleteProduct/' + product.id),
+        JSON.stringify(product)
+      )
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        catchError((err) => {
+          return throwError(err);
+        })
+      );
   }
 }

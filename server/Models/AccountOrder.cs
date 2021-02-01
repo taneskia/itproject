@@ -16,10 +16,10 @@ namespace server.Models
 
         [Column(Order = 2)]
         public int? BuyerID { get; set; }
-        public virtual Buyer Buyer { get; set; }        
-  
+        public virtual Buyer Buyer { get; set; }
+
         [Column(Order = 3)]
-        public int? FreelancerID { get; set; }    
+        public int? FreelancerID { get; set; }
         public virtual Freelancer Freelancer { get; set; }
     }
 }

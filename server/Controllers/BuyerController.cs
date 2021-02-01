@@ -8,7 +8,7 @@ using server.Models.Helpers;
 
 namespace server.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class BuyerController : BaseController
     {
@@ -29,11 +29,7 @@ namespace server.Controllers
         [HttpPost("buy")]
         [Authorize]
         public void MakeOrder([FromBody] List<FrontendProducts> frontendProducts)
-        {            
-            foreach(FrontendProducts fp in frontendProducts)
-                System.Console.WriteLine(fp.ToString());
-
-            
+        {
             Account account = (Account)HttpContext.Items["Account"];
             Buyer buyer = itprojectContext.Buyer.SingleOrDefault(m => m.Id == account.Id);
 
@@ -47,15 +43,16 @@ namespace server.Controllers
                 // TODO: Add product in database or below line will be null
                 Product product = itprojectContext.Product.SingleOrDefault(m => m.ID == frontendProduct.ID);
 
-                if(product == null)
+                if (product == null)
                 {
-                    product = new Product {
+                    product = new Product
+                    {
                         ID = frontendProduct.ID,
-                        ImageURL = frontendProduct.Image,
+                        Image = frontendProduct.Image,
                         Name = frontendProduct.Name,
                         Price = frontendProduct.Price,
                     };
-                    
+
                     itprojectContext.Product.Add(product);
                     itprojectContext.SaveChanges();
                 }
@@ -85,7 +82,7 @@ namespace server.Controllers
             };
 
             buyer.AccountOrders.Add(accountOrder);
-           // itprojectContext.Buyer.Update(buyer);
+            // itprojectContext.Buyer.Update(buyer);
 
             itprojectContext.SaveChanges();
         }

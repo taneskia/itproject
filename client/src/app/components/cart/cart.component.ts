@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Order, OrderState } from 'src/app/models/order.model';
 import { Product } from 'src/app/models/product.model';
+import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
-import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,34 +12,38 @@ import { ProductService } from 'src/app/services/product.service';
 export class CartComponent implements OnInit {
   cart: Product[] = [];
 
-  constructor(private productService: ProductService, private orderService: OrderService) {}
+  constructor(
+    private cartService: CartService,
+    private orderService: OrderService
+  ) {}
 
   ngOnInit(): void {
-    this.cart = this.productService.getCart();
+    this.cart = this.cartService.getCart();
+    console.log(this.cart);
   }
 
   decreaseProductAmount(product: Product) {
-    this.productService.decreaseProductAmount(product);
+    this.cartService.decreaseProductAmount(product);
   }
 
   increaseProductAmount(product: Product) {
-    this.productService.increaseProductAmount(product);
+    this.cartService.increaseProductAmount(product);
   }
 
   deleteProduct(product: Product) {
-    this.productService.deleteAllFromCart(product);
-    this.cart = this.productService.getCart();
+    this.cartService.deleteAllFromCart(product);
+    this.cart = this.cartService.getCart();
   }
 
   calculateSubTotal() {
     return this.cart
-      .reduce((sum, obj) => sum + obj.Price * obj.Amount, 0)
+      .reduce((sum, obj) => sum + obj.price * obj.amount, 0)
       .toFixed(2);
   }
 
   calculateShipping() {
     return this.cart
-      .reduce((sum, obj) => sum + obj.Price * obj.Amount * 0.12, 0)
+      .reduce((sum, obj) => sum + obj.price * obj.amount * 0.12, 0)
       .toFixed(2);
   }
 
@@ -47,12 +51,12 @@ export class CartComponent implements OnInit {
     let order: Order = {
       OrderState: OrderState.Ordered,
       ProductOrder: this.cart,
-      Address: 'Kire Gavriloski 26'
+      Address: 'Kire Gavriloski 26',
     };
 
     this.orderService.addOrder(order).subscribe();
 
-    this.productService.emptyCart();
-    this.cart = this.productService.getCart();
+    this.cartService.emptyCart();
+    this.cart = this.cartService.getCart();
   }
 }

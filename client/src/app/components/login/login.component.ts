@@ -46,13 +46,13 @@ export class LoginComponent implements OnInit {
         Password: this.loginForm.get('password').value,
       };
 
-      this.authService.login(request).subscribe(
+      this.authService.login(request).then(
         (res) => {
           this.authService.setLoggedUser(res);
           this.router.navigateByUrl('').then();
         },
         () => {
-          (this.showAlert = true)
+          this.showAlert = true;
         }
       );
     }

@@ -1,0 +1,9 @@
+.image-container {
+  width: auto;
+  height: 60%;
+}
+
+.row::after {
+  content: "";
+  flex: auto;
+}

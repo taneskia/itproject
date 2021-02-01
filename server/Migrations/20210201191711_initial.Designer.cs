@@ -9,7 +9,7 @@ using server.Models;
 namespace server.Migrations
 {
     [DbContext(typeof(ItprojectContext))]
-    [Migration("20210123125556_initial")]
+    [Migration("20210201191711_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,20 +44,8 @@ namespace server.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("PasswordReset")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("ResetToken")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("ResetTokenExpires")
-                        .HasColumnType("datetime");
-
                     b.Property<int>("Role")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
@@ -107,7 +95,7 @@ namespace server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageURL")
+                    b.Property<string>("Image")
                         .HasColumnType("text");
 
                     b.Property<int?>("MarketId")
@@ -162,7 +150,7 @@ namespace server.Migrations
                 {
                     b.HasBaseType("server.Entities.Account");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("Image")
                         .HasColumnType("text");
 
                     b.HasDiscriminator().HasValue("Market");
@@ -181,21 +169,6 @@ namespace server.Migrations
 
                             b1.Property<DateTime>("Created")
                                 .HasColumnType("datetime");
-
-                            b1.Property<string>("CreatedByIp")
-                                .HasColumnType("text");
-
-                            b1.Property<DateTime>("Expires")
-                                .HasColumnType("datetime");
-
-                            b1.Property<string>("ReplacedByToken")
-                                .HasColumnType("text");
-
-                            b1.Property<DateTime?>("Revoked")
-                                .HasColumnType("datetime");
-
-                            b1.Property<string>("RevokedByIp")
-                                .HasColumnType("text");
 
                             b1.Property<string>("Token")
                                 .HasColumnType("text");

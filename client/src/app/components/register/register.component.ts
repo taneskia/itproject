@@ -47,11 +47,12 @@ export class RegisterComponent implements OnInit {
         ImageUrl: ' ',
       };
 
-      this.authService.register(request).subscribe(
+      this.authService.register(request).then(
         () => {
           this.showAlert = false;
           this.success = true;
           this.showSpinner = false;
+          this.registerForm.reset();
         },
         () => {
           this.showAlert = true;

@@ -27,8 +27,7 @@ export class AuthenticationService {
     private cookieService: CookieService,
     @Inject(USER_SERVICE_STORAGE) private storage: StorageService
   ) {
-    if(!this.storage.get(STORAGE_KEY))
-      this.storage.set(STORAGE_KEY, null);
+    if (!this.storage.get(STORAGE_KEY)) this.storage.set(STORAGE_KEY, null);
     this.loggedInUserSubject = new BehaviorSubject<User>(
       this.getUserFromStorage()
     );
@@ -41,8 +40,10 @@ export class AuthenticationService {
     if (this.cookieService.check('refreshToken'))
       this.cookieService.delete('refreshToken');
 
-    if(loggedUser)
-      this.cookieService.set('refreshToken', loggedUser['refreshToken'], {secure: false});
+    if (loggedUser)
+      this.cookieService.set('refreshToken', loggedUser['refreshToken'], {
+        secure: false,
+      });
 
     this.loggedInUserSubject.next(this.getUserFromStorage());
   }
@@ -57,31 +58,36 @@ export class AuthenticationService {
       : undefined;
   }
 
-  public validateToken() {
-    return this.authApiPost(this.getLoggedUser(), 'refresh-token')
-  }
-
-  register(req: RegisterRequest): Observable<any> {
-    return this.authApiPost(req, 'register');
-  }
-
-  login(req: AuthenticateRequest): Observable<any> {
-    return this.authApiPost(req, 'authenticate');
-  }
-
-  logout(): Observable<any> {
-    return this.http.get(this.utils.getAuthApi('revoke-token'))
-  }
-
-  private authApiPost(req: any, url: string) {
-    return this.http.post(this.utils.getAuthApi(url), JSON.stringify(req)).pipe(
-      map((res) => {
-        return res;
-      }),
-      catchError((err) => {
-        return throwError(err);
-      })
+  async validateToken() {
+    const response = await this.authApiPost(
+      this.getLoggedUser(),
+      'refresh-token'
     );
+    return response;
+  }
+
+  async register(req: RegisterRequest) {
+    const response = await this.authApiPost(req, 'register');
+    return response;
+  }
+
+  async login(req: AuthenticateRequest) {
+    const response = await this.authApiPost(req, 'authenticate');
+    return response;
+  }
+
+  async logout() {
+    const response = await this.http
+      .get(this.utils.getAuthApi('revoke-token'))
+      .toPromise();
+    return response;
+  }
+
+  private async authApiPost(req: any, url: string) {
+    const response = await this.http
+      .post(this.utils.getAuthApi(url), JSON.stringify(req))
+      .toPromise();
+    return response;
   }
 
   private getUserFromStorage(): User {

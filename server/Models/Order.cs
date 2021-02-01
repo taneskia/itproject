@@ -11,7 +11,7 @@ namespace server.Models
         [Key]
         public int ID { get; set; }
         public Order_State State { get; set; }
-        public virtual ICollection<ProductOrder> ProductOrder { get; set; }
+        public virtual List<ProductOrder> ProductOrder { get; set; }
 
         public Order()
         {

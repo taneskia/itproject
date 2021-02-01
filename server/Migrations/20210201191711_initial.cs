@@ -19,13 +19,9 @@ namespace server.Migrations
                     Email = table.Column<string>(nullable: true),
                     PasswordHash = table.Column<string>(nullable: true),
                     Role = table.Column<int>(nullable: false),
-                    ResetToken = table.Column<string>(nullable: true),
-                    ResetTokenExpires = table.Column<DateTime>(nullable: true),
-                    PasswordReset = table.Column<DateTime>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
-                    Updated = table.Column<DateTime>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
-                    ImageUrl = table.Column<string>(nullable: true)
+                    Image = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -53,12 +49,7 @@ namespace server.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     AccountId = table.Column<int>(nullable: false),
                     Token = table.Column<string>(nullable: true),
-                    Expires = table.Column<DateTime>(nullable: false),
-                    Created = table.Column<DateTime>(nullable: false),
-                    CreatedByIp = table.Column<string>(nullable: true),
-                    Revoked = table.Column<DateTime>(nullable: true),
-                    RevokedByIp = table.Column<string>(nullable: true),
-                    ReplacedByToken = table.Column<string>(nullable: true)
+                    Created = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,7 +70,7 @@ namespace server.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<float>(nullable: false),
-                    ImageURL = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
                     MarketId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

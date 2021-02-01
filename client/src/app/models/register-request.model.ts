@@ -1,14 +1,14 @@
 export class RegisterRequest {
-  Name: string;
-  Email: string;
-  Password: string;
-  ConfirmPassword: string;
-  Role: Role;
-  ImageUrl: string;
+    Name: string;
+    Email: string;
+    Password: string;
+    ConfirmPassword: string;
+    Role: Role;
+    ImageUrl: string;
 }
 
 enum Role {
-  Buyer,
-  Freelancer,
-  Market,
+    Buyer,
+    Freelancer,
+    Market,
 }

@@ -7,7 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { FreelancerComponent } from './components/freelancer/freelancer.component';
-import { MarketComponent } from './components/market/market.component';
+import { MarketDashboardComponent } from './components/market-dashboard/market-dashboard.component';
+import { MarketsComponent } from './components/markets/markets.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,7 @@ const routes: Routes = [
     component: CartComponent,
   },
   {
-    path: 'products',
+    path: 'products/:id',
     component: ProductsComponent,
   },
   {
@@ -39,8 +40,12 @@ const routes: Routes = [
     component: FreelancerComponent,
   },
   {
-    path: 'market',
-    component: MarketComponent,
+    path: 'market-dashboard',
+    component: MarketDashboardComponent,
+  },
+  {
+    path: 'markets',
+    component: MarketsComponent,
   },
 ];
 
