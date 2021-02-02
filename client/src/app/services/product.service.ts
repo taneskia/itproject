@@ -21,43 +21,17 @@ export class ProductService {
     return this.marketService.getMarkets();
   }
 
-  public getProductsFromDB(): Observable<any> {
-    return this.http.get(this.utils.getProductApi()).pipe(
-      map((res) => {
-        return res;
-      }),
-      catchError((err) => {
-        return throwError(err);
-      })
-    );
+  public async addMarketProduct(product: Product): Promise<any> {
+    const response = await this.http
+      .post(this.utils.getMarketApi(), JSON.stringify(product))
+      .toPromise();
+    return response;
   }
 
-  public addMarketProduct(product: Product): Observable<any> {
-    return this.http
-      .post(this.utils.getMarketApi('addProduct'), JSON.stringify(product))
-      .pipe(
-        map((res) => {
-          return res;
-        }),
-        catchError((err) => {
-          return throwError(err);
-        })
-      );
-  }
-
-  public deleteMarketProduct(product: Product): Observable<any> {
-    return this.http
-      .post(
-        this.utils.getMarketApi('deleteProduct/' + product.id),
-        JSON.stringify(product)
-      )
-      .pipe(
-        map((res) => {
-          return res;
-        }),
-        catchError((err) => {
-          return throwError(err);
-        })
-      );
+  public async deleteMarketProduct(product: Product): Promise<any> {
+    const response = await this.http
+      .delete(this.utils.getMarketApi(product.id.toString()))
+      .toPromise();
+    return response;
   }
 }

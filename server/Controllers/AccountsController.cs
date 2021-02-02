@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using server.Entities;
 using server.Models.Accounts;
 using server.Services;
-using server.Controllers;
 
 namespace server.Controllers
 {
@@ -28,15 +25,16 @@ namespace server.Controllers
         [HttpPost("authenticate")]
         public ActionResult<AuthenticateResponse> Authenticate(AuthenticateRequest model)
         {
-            var response = _accountService.Authenticate(model, ipAddress());
+            var response = _accountService.Authenticate(model);
             return Ok(response);
         }
 
         [HttpPost("refresh-token")]
         public ActionResult<AuthenticateResponse> RefreshToken()
         {
+            Account account = (Account)HttpContext.Items["Account"];
             var refreshToken = Request.Cookies["refreshToken"];
-            var response = _accountService.RefreshToken(refreshToken, ipAddress());
+            var response = _accountService.RefreshToken(account, refreshToken);
             return Ok(response);
         }
 
@@ -44,12 +42,10 @@ namespace server.Controllers
         [HttpGet("revoke-token")]
         public IActionResult RevokeToken()
         {
-            var token = Request.Cookies["refreshToken"];
+            Account account = (Account)HttpContext.Items["Account"];
 
-            if (string.IsNullOrEmpty(token))
+            if (!_accountService.RevokeToken(account))
                 return BadRequest(new { message = "Token is required" });
-
-            _accountService.RevokeToken(token, ipAddress());
             return Ok(new { message = "Token revoked" });
         }
 
@@ -58,22 +54,6 @@ namespace server.Controllers
         {
             _accountService.Register(model, Request.Headers["origin"]);
             return Ok(new { message = "Registration successful" });
-        }
-
-        [Authorize(Role.Admin)]
-        [HttpGet]
-        public ActionResult<IEnumerable<AccountResponse>> GetAll()
-        {
-            var accounts = _accountService.GetAll();
-            return Ok(accounts);
-        }
-
-        private string ipAddress()
-        {
-            if (Request.Headers.ContainsKey("X-Forwarded-For"))
-                return Request.Headers["X-Forwarded-For"];
-            else
-                return HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
         }
     }
 }

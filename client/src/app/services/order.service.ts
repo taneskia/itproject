@@ -78,19 +78,13 @@ export class OrderService {
     return this.orders;
   }
 
-  addOrder(order: Order) {
+  addOrder(order: Order): Promise<any> {
     order.ID = this.orders[this.orders.length - 1].ID + 1;
     this.orders.push(order);
-
-    return this.http
+    const response = this.http
       .post(this.utils.getBuyerApi('buy'), JSON.stringify(order.ProductOrder))
-      .pipe(
-        map((res) => {
-          return res;
-        }),
-        catchError((err) => {
-          return throwError(err);
-        })
-      );
+      .toPromise();
+
+    return response;
   }
 }

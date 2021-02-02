@@ -52,6 +52,28 @@ namespace server.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("Account");
                 });
 
+            modelBuilder.Entity("server.Entities.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("RefreshToken");
+                });
+
             modelBuilder.Entity("server.Models.AccountOrder", b =>
                 {
                     b.Property<int>("OrderID")
@@ -154,32 +176,11 @@ namespace server.Migrations
                     b.HasDiscriminator().HasValue("Market");
                 });
 
-            modelBuilder.Entity("server.Entities.Account", b =>
+            modelBuilder.Entity("server.Entities.RefreshToken", b =>
                 {
-                    b.OwnsMany("server.Entities.RefreshToken", "RefreshTokens", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
-
-                            b1.Property<int>("AccountId")
-                                .HasColumnType("int");
-
-                            b1.Property<DateTime>("Created")
-                                .HasColumnType("datetime");
-
-                            b1.Property<string>("Token")
-                                .HasColumnType("text");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("AccountId");
-
-                            b1.ToTable("Accounts_RefreshTokens");
-
-                            b1.WithOwner("Account")
-                                .HasForeignKey("AccountId");
-                        });
+                    b.HasOne("server.Entities.Account", "Account")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("AccountId");
                 });
 
             modelBuilder.Entity("server.Models.AccountOrder", b =>

@@ -13,5 +13,10 @@ namespace server.Entities
         public Role Role { get; set; }
         public DateTime Created { get; set; }
         public List<RefreshToken> RefreshTokens { get; set; }
+
+        public Account()
+        {
+            this.RefreshTokens = new List<RefreshToken>();
+        }
     }
 }

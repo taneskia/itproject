@@ -13,14 +13,15 @@ using server.Entities;
 using server.Helpers;
 using server.Models.Accounts;
 using server.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace server.Services
 {
     public interface IAccountService
     {
-        AuthenticateResponse Authenticate(AuthenticateRequest model, string ipAddress);
-        AuthenticateResponse RefreshToken(string token, string ipAddress);
-        void RevokeToken(string token, string ipAddress);
+        AuthenticateResponse Authenticate(AuthenticateRequest model);
+        AuthenticateResponse RefreshToken(Account account, string token);
+        bool RevokeToken(Account account);
         void Register(RegisterRequest model, string origin);
         IEnumerable<AccountResponse> GetAll();
     }
@@ -38,49 +39,60 @@ namespace server.Services
             _mapper = mapper;
         }
 
-        public AuthenticateResponse Authenticate(AuthenticateRequest model, string ipAddress)
+        public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
             var account = _context.Accounts.SingleOrDefault(x => x.Email == model.Email);
 
             if (account == null || !BC.Verify(model.Password, account.PasswordHash))
                 throw new AppException("Email or password is incorrect");
 
-            return UpdateAccountToken(account, ipAddress);
+            return UpdateAccountToken(account);
         }
 
-        public AuthenticateResponse RefreshToken(string token, string ipAddress)
+        public AuthenticateResponse RefreshToken(Account account, string token)
         {
-            var (refreshToken, account) = getRefreshToken(token);
+            var refreshToken = getRefreshToken(token);
 
-            return UpdateAccountToken(account, ipAddress);
+            if (account == null)
+                throw new AppException("Account with refresh token not found");
+
+            if (account.RefreshTokens.Contains(refreshToken))
+                return _mapper.Map<AuthenticateResponse>(account);
+
+            else return UpdateAccountToken(account);
         }
 
-        private AuthenticateResponse UpdateAccountToken(Account account, string ipAddress) {
-            var jwtToken = generateJwtToken(account);
-            var refreshToken = generateRefreshToken(ipAddress);
+        public bool RevokeToken(Account account)
+        {
+            account.RefreshTokens = _context.RefreshToken.Where(t => t.Account.Id == account.Id).ToList();
+
+            if (account.RefreshTokens.Count == 0)
+                return false;
 
             account.RefreshTokens.Clear();
+            _context.RefreshToken.RemoveRange(_context.RefreshToken.Where(t => t.Account.Id == account.Id));
+            _context.Accounts.Update(account);
+            _context.SaveChanges();
+            return true;
+        }
+
+        private AuthenticateResponse UpdateAccountToken(Account account)
+        {
+            var jwtToken = generateJwtToken(account);
+            var refreshToken = generateRefreshToken(account);
+
+            account.RefreshTokens.Clear();
+
+            _context.RefreshToken.RemoveRange(_context.RefreshToken.Where(t => t.Account.Id == account.Id));
             account.RefreshTokens.Add(refreshToken);
 
-            _context.Update(account);
-
-            try {
-                _context.SaveChanges();
-            }
-            catch {}
+            _context.Accounts.Update(account);
+            _context.SaveChanges();
 
             var response = _mapper.Map<AuthenticateResponse>(account);
             response.JwtToken = jwtToken;
             response.RefreshToken = refreshToken.Token;
             return response;
-        }
-
-        public void RevokeToken(string token, string ipAddress)
-        {
-            var (refreshToken, account) = getRefreshToken(token);
-            account.RefreshTokens.Clear();
-            _context.Update(account);
-            _context.SaveChanges();
         }
 
         public void Register(RegisterRequest model, string origin)
@@ -123,12 +135,13 @@ namespace server.Services
             return _mapper.Map<IList<AccountResponse>>(accounts);
         }
 
-        private (RefreshToken, Account) getRefreshToken(string token)
+        // TODO: This doesn't work on refreshing a page in angular
+        private RefreshToken getRefreshToken(string token)
         {
             var account = _context.Accounts.SingleOrDefault(u => u.RefreshTokens.Any(t => t.Token == token));
             if (account == null) throw new AppException("Invalid token");
             var refreshToken = account.RefreshTokens.Single(x => x.Token == token);
-            return (refreshToken, account);
+            return refreshToken;
         }
 
         private string generateJwtToken(Account account)
@@ -145,10 +158,11 @@ namespace server.Services
             return tokenHandler.WriteToken(token);
         }
 
-        private RefreshToken generateRefreshToken(string ipAddress)
+        private RefreshToken generateRefreshToken(Account account)
         {
             return new RefreshToken
             {
+                Account = account,
                 Token = randomTokenString(),
                 Created = DateTime.UtcNow
             };

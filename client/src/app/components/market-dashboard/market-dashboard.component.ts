@@ -51,7 +51,7 @@ export class MarketDashboardComponent implements OnInit {
   }
 
   deleteProduct(product: Product): void {
-    this.productService.deleteMarketProduct(product).subscribe(
+    this.productService.deleteMarketProduct(product).then(
       () => this.getMarketProducts(this.authService.getLoggedUser()),
       (err) => console.log(err)
     );
@@ -68,7 +68,7 @@ export class MarketDashboardComponent implements OnInit {
         image: this.newProductForm.controls.imgUrlProductControl.value,
       };
 
-      this.productService.addMarketProduct(product).subscribe(
+      this.productService.addMarketProduct(product).then(
         () => {
           this.newProductForm.reset();
           this.showSpinner = false;

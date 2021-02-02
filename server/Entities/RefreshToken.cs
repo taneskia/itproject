@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace server.Entities
 {
-    [Owned]
+    //[Owned]
     public class RefreshToken
     {
         [Key]

@@ -31,7 +31,7 @@ namespace server.Controllers
         }
 
         [Authorize]
-        [HttpPost("addProduct")]
+        [HttpPost]
         public bool AddProduct([FromBody] Product product)
         {
             if (product == null)
@@ -45,14 +45,18 @@ namespace server.Controllers
         }
 
         [Authorize]
-        [HttpPost("deleteProduct")]
-        public bool DeleteProduct([FromBody] Product product)
+        [HttpDelete("{id:int}")]
+        public bool DeleteProduct(int id)
         {
+            Account account = (Account)HttpContext.Items["Account"];
+            Market market = itprojectContext.Market.Include(p => p.Products).SingleOrDefault(m => m.Id == account.Id);
+            Product product = market.Products.SingleOrDefault(p => p.ID == id);
+
             if (product == null)
                 return false;
-            Account account = (Account)HttpContext.Items["Account"];
-            Market market = itprojectContext.Market.SingleOrDefault(m => m.Id == account.Id);
+
             market.Products.Remove(product);
+            itprojectContext.Product.Remove(product);
             itprojectContext.Update(market);
             itprojectContext.SaveChanges();
             return true;

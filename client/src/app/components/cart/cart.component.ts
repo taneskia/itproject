@@ -54,9 +54,12 @@ export class CartComponent implements OnInit {
       Address: 'Kire Gavriloski 26',
     };
 
-    this.orderService.addOrder(order).subscribe();
-
-    this.cartService.emptyCart();
-    this.cart = this.cartService.getCart();
+    this.orderService.addOrder(order).then(
+      () => {
+        this.cartService.emptyCart();
+        this.cart = this.cartService.getCart();
+      },
+      (err) => console.log(err)
+    );
   }
 }

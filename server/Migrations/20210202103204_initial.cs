@@ -42,27 +42,6 @@ namespace server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Accounts_RefreshTokens",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    AccountId = table.Column<int>(nullable: false),
-                    Token = table.Column<string>(nullable: true),
-                    Created = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Accounts_RefreshTokens", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Accounts_RefreshTokens_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Product",
                 columns: table => new
                 {
@@ -79,6 +58,27 @@ namespace server.Migrations
                     table.ForeignKey(
                         name: "FK_Product_Accounts_MarketId",
                         column: x => x.MarketId,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RefreshToken",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    AccountId = table.Column<int>(nullable: true),
+                    Token = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RefreshToken", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RefreshToken_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -152,11 +152,6 @@ namespace server.Migrations
                 column: "FreelancerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accounts_RefreshTokens_AccountId",
-                table: "Accounts_RefreshTokens",
-                column: "AccountId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Product_MarketId",
                 table: "Product",
                 column: "MarketId");
@@ -165,6 +160,11 @@ namespace server.Migrations
                 name: "IX_ProductOrders_OrderID",
                 table: "ProductOrders",
                 column: "OrderID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RefreshToken_AccountId",
+                table: "RefreshToken",
+                column: "AccountId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -173,10 +173,10 @@ namespace server.Migrations
                 name: "AccountOrders");
 
             migrationBuilder.DropTable(
-                name: "Accounts_RefreshTokens");
+                name: "ProductOrders");
 
             migrationBuilder.DropTable(
-                name: "ProductOrders");
+                name: "RefreshToken");
 
             migrationBuilder.DropTable(
                 name: "Order");
