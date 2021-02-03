@@ -24,6 +24,8 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]],
       userRole: [Validators.required],
+      address: ['', Validators.required],
+      imageUrl: ['', Validators.required]
     });
 
     this.showAlert = false;
@@ -44,14 +46,14 @@ export class RegisterComponent implements OnInit {
         Password: this.registerForm.get('password').value,
         ConfirmPassword: this.registerForm.get('confirmPassword').value,
         Role: this.registerForm.get('userRole').value,
-        ImageUrl: ' ',
+        ImageUrl: this.registerForm.get('imageUrl').value,
+        Address: this.registerForm.get('address').value
       };
 
       this.authService.register(request).then(
         () => {
-          this.showAlert = false;
+          this.showAlert = this.showSpinner = false;
           this.success = true;
-          this.showSpinner = false;
           this.registerForm.reset();
         },
         () => {

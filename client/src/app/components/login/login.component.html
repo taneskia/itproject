@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="dialog d-flex justify-content-center align-self-center flex-column p-5">
+    <div class="dialog d-flex justify-content-center align-self-center flex-column p-5 mt-5">
         <div class="alert alert-danger text-center" role="alert" *ngIf="showAlert">
             There has been a problem logging you in. Please try again!
         </div>
@@ -51,7 +51,7 @@
                             Must be at least 6 characters long
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center mt-3">
                         <button type="submit" class="btn btn-success flex-fill">Log In</button>
                         <div class="spinner-border mx-3" role="status" *ngIf="showSpinner && !showAlert"></div>
                     </div>

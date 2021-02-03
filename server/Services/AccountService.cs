@@ -23,7 +23,6 @@ namespace server.Services
         AuthenticateResponse RefreshToken(Account account, string token);
         bool RevokeToken(Account account);
         void Register(RegisterRequest model, string origin);
-        IEnumerable<AccountResponse> GetAll();
     }
 
     public class AccountService : IAccountService
@@ -51,13 +50,18 @@ namespace server.Services
 
         public AuthenticateResponse RefreshToken(Account account, string token)
         {
-            var refreshToken = getRefreshToken(token);
+            account.RefreshTokens = _context.RefreshToken.Where(t => t.Account.Id == account.Id).ToList();
 
             if (account == null)
                 throw new AppException("Account with refresh token not found");
 
-            if (account.RefreshTokens.Contains(refreshToken))
-                return _mapper.Map<AuthenticateResponse>(account);
+            if (account.RefreshTokens.Count != 0)
+            {
+                AuthenticateResponse response = _mapper.Map<AuthenticateResponse>(account);
+                response.RefreshToken = account.RefreshTokens.First().Token;
+                response.JwtToken = generateJwtToken(account);
+                return response;
+            }
 
             else return UpdateAccountToken(account);
         }
@@ -84,8 +88,10 @@ namespace server.Services
             account.RefreshTokens.Clear();
 
             _context.RefreshToken.RemoveRange(_context.RefreshToken.Where(t => t.Account.Id == account.Id));
-            account.RefreshTokens.Add(refreshToken);
+            _context.RefreshToken.Add(refreshToken);
+            _context.SaveChanges();
 
+            account.RefreshTokens = _context.RefreshToken.Where(t => t.Account.Id == account.Id).ToList();
             _context.Accounts.Update(account);
             _context.SaveChanges();
 
@@ -101,6 +107,7 @@ namespace server.Services
 
             // map model to new account object
             Account account = null;
+
             if (role == Role.Market)
             {
                 Market market = _mapper.Map<Market>(model);
@@ -127,21 +134,6 @@ namespace server.Services
             account.PasswordHash = BC.HashPassword(model.Password);
 
             _context.SaveChanges();
-        }
-
-        public IEnumerable<AccountResponse> GetAll()
-        {
-            var accounts = _context.Accounts;
-            return _mapper.Map<IList<AccountResponse>>(accounts);
-        }
-
-        // TODO: This doesn't work on refreshing a page in angular
-        private RefreshToken getRefreshToken(string token)
-        {
-            var account = _context.Accounts.SingleOrDefault(u => u.RefreshTokens.Any(t => t.Token == token));
-            if (account == null) throw new AppException("Invalid token");
-            var refreshToken = account.RefreshTokens.Single(x => x.Token == token);
-            return refreshToken;
         }
 
         private string generateJwtToken(Account account)

@@ -11,6 +11,7 @@ namespace server.Models
         [Key]
         public int ID { get; set; }
         public Order_State State { get; set; }
+        public string Address { get; set; }
         public virtual List<ProductOrder> ProductOrder { get; set; }
 
         public Order()

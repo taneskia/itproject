@@ -31,7 +31,7 @@
                     [routerLink]="['/freelancer']">Profile</a>
                 <a class="dropdown-item" href="#" *ngIf="currentUser.role === 'Market'"
                     [routerLink]="['/market-dashboard']">Profile</a>
-                <a class="dropdown-item" href="#" (click)="logout()">Log Out</a>
+                <a class="dropdown-item cursor" (click)="logout()">Log Out</a>
             </div>
         </div>
     </div>

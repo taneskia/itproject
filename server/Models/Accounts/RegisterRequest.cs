@@ -23,6 +23,10 @@ namespace server.Models.Accounts
         [Required]
         public string Role { get; set; }
 
+        [Required]
         public string ImageUrl { get; set; }
+
+        [Required]
+        public string Address { get; set; }
     }
 }

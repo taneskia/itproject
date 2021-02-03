@@ -14,13 +14,9 @@ export class MarketService {
   constructor(private http: HttpClient, private utils: UtilitiesService) {}
 
   public async getMarkets(): Promise<Market[]> {
-    await this.getMarketsFromDB().then((res: Market[]) => this.setMarkets(res));
+    await this.getMarketsFromDB().then((res: Market[]) => this.markets = res);
 
     return this.markets;
-  }
-
-  public setMarkets(markets: Market[]) {
-    this.markets = markets;
   }
 
   private async getMarketsFromDB() {

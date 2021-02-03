@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Order, OrderState } from 'src/app/models/order.model';
 import { FreelancerService } from '../../services/freelancer.service';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-freelancer',
@@ -15,19 +16,20 @@ export class FreelancerComponent implements OnInit {
   constructor(private freelancerService: FreelancerService) {}
 
   ngOnInit(): void {
-    this.orders = this.freelancerService.getOrders();
-    this.acceptedOrders = this.freelancerService.getAcceptedOrders();
+    this.freelancerService.getOrders().then(res => this.orders = res);
+    this.freelancerService.getAcceptedOrders().then(res => this.acceptedOrders = res);
   }
 
   totalOrderPrice(order: Order) {
-    return +order.ProductOrder.reduce(
-      (sum, obj) => sum + obj.price * obj.amount,
+    console.log(order);
+    return +order.products.reduce(
+      (sum, obj: Product) => sum + obj.price * obj.amount,
       0
     ); //+this.shippingPrice(order)).toFixed(2);
   }
 
   shippingPrice(order: Order) {
-    return order.ProductOrder.reduce(
+    return order.products.reduce(
       (sum, obj) => sum + obj.price * obj.amount * 0.12,
       0
     ).toFixed(2);

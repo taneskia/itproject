@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { RegisterRequest } from '../models/register-request.model';
 import { AuthenticateRequest } from '../models/authenticate-request.model';
 import { CookieService } from 'ngx-cookie-service';
+import { stringify } from '@angular/compiler/src/util';
 
 const STORAGE_KEY = 'current-user';
 export const USER_SERVICE_STORAGE = new InjectionToken<StorageService>(
@@ -58,7 +59,7 @@ export class AuthenticationService {
       : undefined;
   }
 
-  async validateToken() {
+  async validateToken() : Promise<any> {
     const response = await this.authApiPost(
       this.getLoggedUser(),
       'refresh-token'
@@ -66,24 +67,24 @@ export class AuthenticationService {
     return response;
   }
 
-  async register(req: RegisterRequest) {
+  async register(req: RegisterRequest): Promise<any> {
     const response = await this.authApiPost(req, 'register');
     return response;
   }
 
-  async login(req: AuthenticateRequest) {
+  async login(req: AuthenticateRequest): Promise<any> {
     const response = await this.authApiPost(req, 'authenticate');
     return response;
   }
 
-  async logout() {
+  async logout(): Promise<any> {
     const response = await this.http
       .get(this.utils.getAuthApi('revoke-token'))
       .toPromise();
     return response;
   }
 
-  private async authApiPost(req: any, url: string) {
+  private async authApiPost(req: any, url: string): Promise<any> {
     const response = await this.http
       .post(this.utils.getAuthApi(url), JSON.stringify(req))
       .toPromise();

@@ -12,6 +12,7 @@ export class UtilitiesService {
     private buyerAPI = this.baseURL + 'api/Buyer/';
     private marketAPI = this.baseURL + 'api/Market/';
     private productAPI = this.baseURL + 'api/Product/';
+    private freelancerAPI = this.baseURL + 'api/Freelancer/';
     
     getAuthApi(path: string = ''): string {
         return this.authAPI + path;
@@ -27,5 +28,9 @@ export class UtilitiesService {
     
     getProductApi(path: string = ''): string {
         return this.productAPI + path;
+    }
+
+    getFreelancerApi(path: string = ''): string {
+        return this.freelancerAPI + path;
     }
 }

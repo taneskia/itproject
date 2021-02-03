@@ -30,7 +30,7 @@ namespace server.Controllers
             return itprojectContext.Market.Include(p => p.Products);
         }
 
-        [Authorize]
+        [Authorize(Role.Market)]
         [HttpPost]
         public bool AddProduct([FromBody] Product product)
         {
@@ -44,7 +44,7 @@ namespace server.Controllers
             return true;
         }
 
-        [Authorize]
+        [Authorize(Role.Market)]
         [HttpDelete("{id:int}")]
         public bool DeleteProduct(int id)
         {

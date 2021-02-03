@@ -1,6 +1,6 @@
 <div class="bg p-3">
     <div class="container-fluid align-items-center my-3">
-        <div class="row align-items-center">
+        <div class="row align-items-center mb-5">
             <div class="col-3">
                 <button type="button" class="btn btn-light" [routerLink]="['']">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-return-left"
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="dialog d-flex justify-content-center align-self-center flex-column p-5">
+        <div class="dialog d-flex justify-content-center align-self-center flex-column py-5">
             <div class="alert alert-danger text-center" role="alert" *ngIf="showAlert">
                 There has been a problem with the registration. Please try again!
             </div>
@@ -28,38 +28,52 @@
                 Successfully registered!
             </div>
             <div class="row align-items-center">
-                <div class="col">
+                <div class="col-5">
                     <img src="https://img.icons8.com/bubbles/344/email-male.png" alt="Registration Image" />
                 </div>
-                <div class="col">
+                <div class="col-7">
                     <form ngNativeValidate [formGroup]="registerForm" class="was-validation" id="registration-form"
                         (keydown.enter)="register()" (ngSubmit)="register()"
                         oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? "Passwords do not match." : "")'>
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input formControlName="name" class="form-control" placeholder="Enter your full name"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email address</label>
-                            <input formControlName="email" type="email" class="form-control" placeholder="Enter email"
-                                required>
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                                else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input formControlName="password" name=password type="password" class="form-control"
-                                [ngClass]="{'is-invalid': this.registerForm.get('password').invalid && this.registerForm.get('password').touched}"
-                                placeholder="Password" required>
-                            <div class="invalid-feedback">
-                                Must be at least 6 characters long
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label>Full Name</label>
+                                <input formControlName="name" class="form-control" placeholder="Enter your full name"
+                                    required>
+                            </div>
+                            <div class="col form-group">
+                                <label>Account Image</label>
+                                <input formControlName="imageUrl" name="imageUrl" type="text"
+                                    class="form-control" placeholder="Image URL" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Confirm Password</label>
-                            <input formControlName=confirmPassword name="confirmPassword" type="password"
-                                class="form-control" placeholder="Confirm Password" required>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label>Address</label>
+                                <input formControlName="address" name="address" type="text"
+                                    class="form-control" placeholder="Address" required>
+                            </div>
+                            <div class="col form-group">
+                                <label>Email address</label>
+                                <input formControlName="email" type="email" class="form-control" placeholder="Enter email"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label>Password</label>
+                                <input formControlName="password" name=password type="password" class="form-control"
+                                    [ngClass]="{'is-invalid': this.registerForm.get('password').invalid && this.registerForm.get('password').touched}"
+                                    placeholder="Password" required>
+                                <div class="invalid-feedback">
+                                    Must be at least 6 characters long
+                                </div>
+                            </div>
+                            <div class="col form-group">
+                                <label>Confirm Password</label>
+                                <input formControlName=confirmPassword name="confirmPassword" type="password"
+                                    class="form-control" placeholder="Confirm Password" required>
+                            </div>
                         </div>
                         <p class="mb-1">User Type</p>
                         <div class="bg-light border p-3 rounded d-flex justify-content-center">

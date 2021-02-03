@@ -1,10 +1,10 @@
 import { Product } from './product.model';
 
 export class Order {
-    ID?: number;
-    OrderState: OrderState;
-    ProductOrder: Product[];
-    Address: string;
+    orderID?: number;
+    orderState: OrderState;
+    address: string;
+    products: Product[];
 }
 
 export enum OrderState {

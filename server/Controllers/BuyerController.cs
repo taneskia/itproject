@@ -40,22 +40,7 @@ namespace server.Controllers
 
             foreach (FrontendProducts frontendProduct in frontendProducts)
             {
-                // TODO: Add product in database or below line will be null
                 Product product = itprojectContext.Product.SingleOrDefault(m => m.ID == frontendProduct.ID);
-
-                if (product == null)
-                {
-                    product = new Product
-                    {
-                        ID = frontendProduct.ID,
-                        Image = frontendProduct.Image,
-                        Name = frontendProduct.Name,
-                        Price = frontendProduct.Price,
-                    };
-
-                    itprojectContext.Product.Add(product);
-                    itprojectContext.SaveChanges();
-                }
 
                 ProductOrder productOrder = new ProductOrder
                 {
@@ -82,7 +67,7 @@ namespace server.Controllers
             };
 
             buyer.AccountOrders.Add(accountOrder);
-            // itprojectContext.Buyer.Update(buyer);
+            itprojectContext.Buyer.Update(buyer);
 
             itprojectContext.SaveChanges();
         }

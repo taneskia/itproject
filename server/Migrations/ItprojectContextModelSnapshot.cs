@@ -101,6 +101,9 @@ namespace server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
                     b.Property<int>("State")
                         .HasColumnType("int");
 

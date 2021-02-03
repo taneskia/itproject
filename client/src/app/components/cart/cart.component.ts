@@ -3,6 +3,8 @@ import { Order, OrderState } from 'src/app/models/order.model';
 import { Product } from 'src/app/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -14,12 +16,17 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private orderService: OrderService
-  ) {}
+    private orderService: OrderService,
+    private authService: AuthenticationService,
+    private router: Router
+  ) {
+    let user = this.authService.getLoggedUser();
+    if (!user || user.role !== 'Buyer')
+      router.navigateByUrl('/login');
+    }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
-    console.log(this.cart);
   }
 
   decreaseProductAmount(product: Product) {
@@ -49,9 +56,9 @@ export class CartComponent implements OnInit {
 
   makeOrder() {
     let order: Order = {
-      OrderState: OrderState.Ordered,
-      ProductOrder: this.cart,
-      Address: 'Kire Gavriloski 26',
+      orderState: OrderState.Ordered,
+      products: this.cart,
+      address: 'Kire Gavriloski 26',
     };
 
     this.orderService.addOrder(order).then(

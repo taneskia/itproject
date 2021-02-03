@@ -5,6 +5,7 @@ export class RegisterRequest {
     ConfirmPassword: string;
     Role: Role;
     ImageUrl: string;
+    Address: string;
 }
 
 enum Role {

@@ -9,18 +9,18 @@
                     <button class="btn btn-link" type="button" data-toggle="collapse"
                         [attr.data-target]="'#collapse-' + i" aria-expanded="false"
                         [attr.aria-controls]="'collapse-' + i">
-                        Order ID: <span class="ml-3">{{order.ID}}</span>
+                        Order ID: <span class="ml-3">{{order.orderID}}</span>
                     </button>
                 </h2>
                 <span class="col-5">Order Status: <span
-                        class="font-weight-bold ml-3">{{states[order.OrderState]}}</span></span>
+                        class="font-weight-bold ml-3">{{states[order.orderState]}}</span></span>
                 <span class="col-2">Total Price: <span
                         class="font-weight-bold ml-3">${{totalOrderPrice(order)}}</span></span>
             </div>
             <div id="collapse-{{i}}" class="collapse mx-3 my-1" [attr.aria-labelledby]="'heading-' + i"
                 data-parent="#orderAccordion">
                 <div class="my-2 p-3 border shadow-sm rounded d-flex align-items-center"
-                    *ngFor="let item of order.ProductOrder">
+                    *ngFor="let item of order.products">
                     <div class="row mx-auto align-items-center w-100 px-3">
                         <div class="col">
                             <div class="image-container my-auto d-flex align-self-center mr-5">
@@ -34,7 +34,6 @@
                             <p class="text-left m-0">Amount: {{item.amount}}</p>
                         </div>
                         <div class="col">
-                            <!-- <p class="text-left m-0">Market: {{item.market.Name}}</p> -->
                         </div>
                         <div class="col-2">
                             <p class="text-left m-0">US ${{(item.price * item.amount).toFixed(2)}}</p>

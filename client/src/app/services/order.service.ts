@@ -12,9 +12,9 @@ import { Order, OrderState } from '../models/order.model';
 export class OrderService {
   orders: Order[] = [
     {
-      ID: 1,
-      OrderState: OrderState.Ordered,
-      ProductOrder: [
+      orderID: 1,
+      orderState: OrderState.Ordered,
+      products: [
         {
           id: 1,
           name: 'Bananas',
@@ -46,12 +46,12 @@ export class OrderService {
             'https://specials-images.forbesimg.com/imageserve/5f42b5182138dffac9bf05b7/960x0.jpg',
         },
       ],
-      Address: 'Partizanski Odredi 7',
+      address: 'Partizanski Odredi 7',
     },
     {
-      ID: 2,
-      OrderState: OrderState.Ordered,
-      ProductOrder: [
+      orderID: 2,
+      orderState: OrderState.Ordered,
+      products: [
         {
           id: 4,
           name: 'Pears',
@@ -68,7 +68,7 @@ export class OrderService {
           image: 'https://images.heb.com/is/image/HEBGrocery/000513694',
         },
       ],
-      Address: 'Boris Kidrich 102',
+      address: 'Boris Kidrich 102',
     },
   ];
 
@@ -79,10 +79,10 @@ export class OrderService {
   }
 
   addOrder(order: Order): Promise<any> {
-    order.ID = this.orders[this.orders.length - 1].ID + 1;
+    order.orderID = this.orders[this.orders.length - 1].orderID + 1;
     this.orders.push(order);
     const response = this.http
-      .post(this.utils.getBuyerApi('buy'), JSON.stringify(order.ProductOrder))
+      .post(this.utils.getBuyerApi('buy'), JSON.stringify(order.products))
       .toPromise();
 
     return response;

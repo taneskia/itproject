@@ -19,8 +19,8 @@ export class OrdersComponent implements OnInit {
     private router: Router,
     private orderService: OrderService
   ) {
-    // if (!this.authService.getLoggedUser())
-    //   router.navigateByUrl('/login');
+    if (!this.authService.getLoggedUser())
+      router.navigateByUrl('/login');
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class OrdersComponent implements OnInit {
 
   totalOrderPrice(order: Order) {
     return (
-      +order.ProductOrder.reduce(
+      +order.products.reduce(
         (sum, obj) => sum + obj.price * obj.amount,
         0
       ) + +this.shippingPrice(order)
@@ -37,7 +37,7 @@ export class OrdersComponent implements OnInit {
   }
 
   shippingPrice(order: Order) {
-    return order.ProductOrder.reduce(
+    return order.products.reduce(
       (sum, obj) => sum + obj.price * obj.amount * 0.12,
       0
     ).toFixed(2);
