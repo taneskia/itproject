@@ -7,7 +7,6 @@ namespace server.Models
 {
     public class Market : Account
     {
-        public string Image { get; set; }
         public virtual List<Product> Products { get; set; }
 
         public Market()

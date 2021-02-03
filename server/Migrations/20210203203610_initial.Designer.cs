@@ -9,7 +9,7 @@ using server.Models;
 namespace server.Migrations
 {
     [DbContext(typeof(ItprojectContext))]
-    [Migration("20210203020239_initial")]
+    [Migration("20210203203610_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,9 @@ namespace server.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Image")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -142,6 +145,7 @@ namespace server.Migrations
             modelBuilder.Entity("server.Models.ProductOrder", b =>
                 {
                     b.Property<int>("ProductID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("OrderID")
@@ -174,9 +178,6 @@ namespace server.Migrations
             modelBuilder.Entity("server.Models.Market", b =>
                 {
                     b.HasBaseType("server.Entities.Account");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("text");
 
                     b.HasDiscriminator().HasValue("Market");
                 });

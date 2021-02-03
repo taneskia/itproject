@@ -6,8 +6,8 @@
         <div class="accordion" id="Orders">
             <div class="card w-100" *ngFor="let order of orders; let i = index">
                 <div class="card-header row align-items-center">
-                    <div class="d-flex justify-content-between col-11" id="order-{{i}}" data-toggle="collapse"
-                        [attr.data-target]="'#orderCollapse-' + i" aria-expanded="false"
+                    <div class="d-flex justify-content-between align-items-center col-11" id="order-{{i}}"
+                        data-toggle="collapse" [attr.data-target]="'#orderCollapse-' + i" aria-expanded="false"
                         [attr.aria-controls]="'orderCollapse-' + i">
                         <span class="col-3">
                             Order No: <span>{{order.orderID}}</span>
@@ -29,10 +29,8 @@
                         <div class="my-2 p-3 border shadow-sm rounded d-flex align-items-center"
                             *ngFor="let item of order.products">
                             <div class="row justify-content-between align-items-center w-100">
-                                <!-- OVDE IMASE px-5  -->
-                                <div class="col-3 ml-5">
+                                <div class="col-2">
                                     <div class="image-container my-auto d-flex align-self-center">
-                                        <!-- OVDE IMASE mr-5  -->
                                         <img src="{{item.image}}" alt="Cart Item" class="align-self-center m-0" />
                                     </div>
                                 </div>
@@ -42,15 +40,14 @@
                                 <div class="col-3">
                                     <p class="text-center m-0">Amount: {{item.amount}}</p>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <p class="text-center m-0">US ${{(item.price * item.amount).toFixed(2)}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="my-3 p-3 border shadow-sm rounded d-flex align-items-center">
                             <div class="row justify-content-between align-items-center w-100">
-                                <!-- OVDE IMASE px-5  -->
-                                <div class="col-3 ml-5">
+                                <div class="col-4">
                                     <div class="my-auto d-flex align-self-center">
                                         <span>Delivery Price:</span>
                                     </div>

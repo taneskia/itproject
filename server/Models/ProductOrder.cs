@@ -8,6 +8,7 @@ namespace server.Models
     {
 
         [Key, Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductID { get; set; }
         public Product Product { get; set; }
 

@@ -33,8 +33,7 @@ namespace server.Controllers
         public ActionResult<AuthenticateResponse> RefreshToken()
         {
             Account account = (Account)HttpContext.Items["Account"];
-            var refreshToken = Request.Cookies["refreshToken"];
-            var response = _accountService.RefreshToken(account, refreshToken);
+            var response = _accountService.RefreshToken(account);
             return Ok(response);
         }
 
@@ -52,7 +51,7 @@ namespace server.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterRequest model)
         {
-            _accountService.Register(model, Request.Headers["origin"]);
+            _accountService.Register(model);
             return Ok(new { message = "Registration successful" });
         }
     }

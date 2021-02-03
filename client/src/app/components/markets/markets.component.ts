@@ -31,6 +31,7 @@ export class MarketsComponent implements OnInit {
 
   ngOnInit(): void {
     this.marketService.getMarkets().then((res) => {
+      console.log(res);
       this.markets = res;
     });
   }

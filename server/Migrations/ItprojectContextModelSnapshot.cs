@@ -36,6 +36,9 @@ namespace server.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -140,6 +143,7 @@ namespace server.Migrations
             modelBuilder.Entity("server.Models.ProductOrder", b =>
                 {
                     b.Property<int>("ProductID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("OrderID")
@@ -172,9 +176,6 @@ namespace server.Migrations
             modelBuilder.Entity("server.Models.Market", b =>
                 {
                     b.HasBaseType("server.Entities.Account");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("text");
 
                     b.HasDiscriminator().HasValue("Market");
                 });

@@ -1,9 +1,7 @@
 using AutoMapper;
 using BC = BCrypt.Net.BCrypt;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -13,16 +11,15 @@ using server.Entities;
 using server.Helpers;
 using server.Models.Accounts;
 using server.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace server.Services
 {
     public interface IAccountService
     {
         AuthenticateResponse Authenticate(AuthenticateRequest model);
-        AuthenticateResponse RefreshToken(Account account, string token);
+        AuthenticateResponse RefreshToken(Account account);
         bool RevokeToken(Account account);
-        void Register(RegisterRequest model, string origin);
+        void Register(RegisterRequest model);
     }
 
     public class AccountService : IAccountService
@@ -41,6 +38,7 @@ namespace server.Services
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
             var account = _context.Accounts.SingleOrDefault(x => x.Email == model.Email);
+            account.RefreshTokens = _context.RefreshToken.Where(t => t.Account.Id == account.Id).ToList();
 
             if (account == null || !BC.Verify(model.Password, account.PasswordHash))
                 throw new AppException("Email or password is incorrect");
@@ -48,7 +46,7 @@ namespace server.Services
             return UpdateAccountToken(account);
         }
 
-        public AuthenticateResponse RefreshToken(Account account, string token)
+        public AuthenticateResponse RefreshToken(Account account)
         {
             account.RefreshTokens = _context.RefreshToken.Where(t => t.Account.Id == account.Id).ToList();
 
@@ -58,7 +56,7 @@ namespace server.Services
             if (account.RefreshTokens.Count != 0)
             {
                 AuthenticateResponse response = _mapper.Map<AuthenticateResponse>(account);
-                response.RefreshToken = account.RefreshTokens.First().Token;
+                response.RefreshToken = account.RefreshTokens.Last().Token;
                 response.JwtToken = generateJwtToken(account);
                 return response;
             }
@@ -86,12 +84,8 @@ namespace server.Services
             var refreshToken = generateRefreshToken(account);
 
             account.RefreshTokens.Clear();
+            account.RefreshTokens.Add(refreshToken);
 
-            _context.RefreshToken.RemoveRange(_context.RefreshToken.Where(t => t.Account.Id == account.Id));
-            _context.RefreshToken.Add(refreshToken);
-            _context.SaveChanges();
-
-            account.RefreshTokens = _context.RefreshToken.Where(t => t.Account.Id == account.Id).ToList();
             _context.Accounts.Update(account);
             _context.SaveChanges();
 
@@ -101,7 +95,7 @@ namespace server.Services
             return response;
         }
 
-        public void Register(RegisterRequest model, string origin)
+        public void Register(RegisterRequest model)
         {
             Role role = (Role)Enum.Parse(typeof(Role), model.Role);
 

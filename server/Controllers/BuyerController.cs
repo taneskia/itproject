@@ -35,6 +35,7 @@ namespace server.Controllers
 
             Order order = new Order();
             order.State = Order.Order_State.Ordered;
+            order.Address = account.Address;
 
             itprojectContext.Order.Add(order);
 

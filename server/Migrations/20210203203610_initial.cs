@@ -16,12 +16,12 @@ namespace server.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     PasswordHash = table.Column<string>(nullable: true),
                     Role = table.Column<int>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false),
-                    Image = table.Column<string>(nullable: true)
+                    Discriminator = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,7 +121,8 @@ namespace server.Migrations
                 name: "ProductOrders",
                 columns: table => new
                 {
-                    ProductID = table.Column<int>(nullable: false),
+                    ProductID = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     OrderID = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false)
                 },
