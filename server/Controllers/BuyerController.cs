@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using server.Entities;
 using server.Models;
 using server.Models.Helpers;
@@ -71,6 +72,39 @@ namespace server.Controllers
             itprojectContext.Buyer.Update(buyer);
 
             itprojectContext.SaveChanges();
+        }
+
+        [Authorize]
+        [HttpGet("my-orders")]
+        public List<FrontendOrder> getMyOrders()
+        {
+            Account account = (Account)HttpContext.Items["Account"];
+            Buyer buyer = itprojectContext.Buyer.Include(b => b.AccountOrders)
+                .ThenInclude(ao => ao.Order)
+                .ThenInclude(o => o.ProductOrder)
+                .ThenInclude(po => po.Product).SingleOrDefault(b => b.Id == account.Id);
+
+            //List<AccountOrder> accountOrders = itprojectContext.AccountOrders.Include(ao => ao.Order).Where(ao => ao.BuyerID == buyer.Id).ToList();
+            List<FrontendOrder> orderProducts = new List<FrontendOrder>();
+            foreach(AccountOrder ao in buyer.AccountOrders)
+            {
+                FrontendOrder fo = new FrontendOrder();
+                fo.orderID = ao.Order.ID;
+                fo.orderState = ao.Order.State;
+                fo.Address = ao.Order.Address;
+                foreach(ProductOrder po in ao.Order.ProductOrder)
+                {
+                    FrontendProducts fp = new FrontendProducts();
+                    fp.ID = po.ProductID;
+                    fp.Name = po.Product.Name;
+                    fp.Price = po.Product.Price;
+                    fp.Image = po.Product.Image;
+                    fp.Amount = po.Quantity;
+                    fo.Products.Add(fp);
+                }
+                orderProducts.Add(fo);
+            }
+            return orderProducts;
         }
     }
 }

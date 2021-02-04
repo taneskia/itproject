@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using server.Entities;
+using server.Helpers;
 using server.Models;
 using server.Models.Helpers;
 using server.Services;
@@ -29,6 +30,40 @@ namespace server.Controllers
         public string test()
         {
             return "FreelancerTest";
+        }
+
+        [Authorize(Role.Freelancer)]
+        [HttpPost("accept-order")]
+        public void acceptOrder([FromBody]FrontendOrder order) 
+        {
+            Account account = (Account)HttpContext.Items["Account"];
+            Freelancer freelancer = itprojectContext.Freelancer.SingleOrDefault(f => f.Id == account.Id);
+
+            AccountOrder accountOrder = itprojectContext.AccountOrders.Include(ao => ao.Buyer).Include(ao => ao.Order).SingleOrDefault(ao => ao.OrderID == order.orderID);
+            if(accountOrder == null || accountOrder.FreelancerID != null)
+                throw new AppException("This order is already accepted!");
+            
+            accountOrder.FreelancerID = freelancer.Id;
+            accountOrder.Freelancer = freelancer;
+            accountOrder.Order.State += 1;
+            freelancer.AccountOrders.Add(accountOrder);
+
+            itprojectContext.Freelancer.Update(freelancer);
+            itprojectContext.SaveChanges();
+        }
+
+        [Authorize(Role.Freelancer)]
+        [HttpPost("update-orderState")]
+        public void updateOrder([FromBody]FrontendOrder frontendOrder) 
+        {
+            Order order = itprojectContext.Order.SingleOrDefault(o => o.ID == frontendOrder.orderID);
+            
+            if(order == null)
+                throw new AppException("There is a problem updating this order");
+
+            order.State += 1;
+            itprojectContext.Order.Update(order);
+            itprojectContext.SaveChanges();
         }
 
         [Authorize(Role.Freelancer)]

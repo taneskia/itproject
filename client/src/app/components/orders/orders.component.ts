@@ -24,7 +24,10 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.orders = this.orderService.getOrders();
+    this.orderService.getOrders().then(res => {
+      this.orderService.orders = res;
+      this.orders = this.orderService.orders;
+    });
   }
 
   totalOrderPrice(order: Order) {

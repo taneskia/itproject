@@ -26,7 +26,7 @@ export class CartService {
   }
 
   increaseProductAmount(product: Product) {
-    this.cart.find((x) => x === product).amount++;
+    this.cart.find((x) => x.id === product.id).amount++;
   }
 
   public deleteAllFromCart(product: Product) {

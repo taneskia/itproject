@@ -3,7 +3,7 @@
         <a href="/" class="h-100"><img class="h-100"
                 src="https://i.pinimg.com/originals/58/d1/28/58d1288f7821fc28142e999091afb409.png" /></a>
         <button type="button" class="btn btn-link ml-5" [routerLink]="['']">Home</button>
-        <button type="button" class="btn btn-link ml-5" *ngIf="currentUser && currentUser.role !== 'Market'"
+        <button type="button" class="btn btn-link ml-5" *ngIf="currentUser && currentUser.role === 'Buyer'"
             [routerLink]="['/markets']">Markets</button>
     </div>
     <div>

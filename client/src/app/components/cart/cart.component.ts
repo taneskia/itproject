@@ -63,6 +63,7 @@ export class CartComponent implements OnInit {
 
     this.orderService.addOrder(order).then(
       () => {
+        this.orderService.orders.push(order);
         this.cartService.emptyCart();
         this.cart = this.cartService.getCart();
       },

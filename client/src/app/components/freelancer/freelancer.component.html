@@ -19,7 +19,7 @@
                             Order price: $<span>{{totalOrderPrice(order)}}</span>
                         </span>
                     </div>
-                    <button class="btn btn-outline-success col-1">
+                    <button class="btn btn-outline-success col-1" (click)="acceptOrder(order)">
                         ⯈
                     </button>
                 </div>
@@ -76,11 +76,11 @@
                             Order No: <span>{{order.orderID}}</span>
                         </span>
                         <span class="col-6">
-                            Order State: <span>{{states[order.orderState]}}</span>
+                            Order State: <span>{{nameOfState(order.orderState)}}</span>
                         </span>
                     </div>
-                    <button class="btn btn-outline-warning col-3">
-                        {{states[order.orderState + 1]}}
+                    <button class="btn col-3" (click)="updateOrderState(order)" [ngClass]="[btnClassess[order.orderState + 1]]" [disabled]="states[order.orderState] === states[3]">
+                        {{nameOfState(order.orderState + 1)}}
                     </button>
                 </div>
                 <div id="acceptedOrderCollapse-{{i}}" class="collapse" [attr.aria-labelledby]="'acceptedOrder-' + i"
@@ -96,7 +96,7 @@
                                 <div class="col-3 ml-5">
                                     <div class="image-container my-auto d-flex align-self-center">
                                         <!-- OVDE IMASE mr-5  -->
-                                        <img src="item.image" alt="Cart Item" class="align-self-center m-0" />
+                                        <img src="{{item.image}}" alt="Cart Item" class="align-self-center m-0" />
                                     </div>
                                 </div>
                                 <div class="col-3">

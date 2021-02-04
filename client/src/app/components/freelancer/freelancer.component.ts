@@ -8,10 +8,12 @@ import { Product } from '../../models/product.model';
   templateUrl: './freelancer.component.html',
   styleUrls: ['./freelancer.component.scss'],
 })
+
 export class FreelancerComponent implements OnInit {
   orders: Order[];
   acceptedOrders: Order[];
   states = OrderState;
+  btnClassess: string[] = ['', '', 'btn-outline-primary', 'btn-outline-success', 'btn-outline-secondary'];
 
   constructor(private freelancerService: FreelancerService) {}
 
@@ -21,11 +23,10 @@ export class FreelancerComponent implements OnInit {
   }
 
   totalOrderPrice(order: Order) {
-    console.log(order);
     return +order.products.reduce(
       (sum, obj: Product) => sum + obj.price * obj.amount,
       0
-    ); //+this.shippingPrice(order)).toFixed(2);
+    ).toFixed(2); //+this.shippingPrice(order)).toFixed(2);
   }
 
   shippingPrice(order: Order) {
@@ -33,5 +34,22 @@ export class FreelancerComponent implements OnInit {
       (sum, obj) => sum + obj.price * obj.amount * 0.12,
       0
     ).toFixed(2);
+  }
+
+  acceptOrder(order: Order): void {
+    this.freelancerService.acceptOrder(order).then(() => {
+      this.freelancerService.getOrders().then(res => this.orders = res);
+      this.freelancerService.getAcceptedOrders().then(res => this.acceptedOrders = res);
+    }, err => console.log(err));
+  }
+
+  updateOrderState(order: Order): void {
+    this.freelancerService.updateOrderState(order).then(() => this.freelancerService.getAcceptedOrders().then(res => this.acceptedOrders = res, err => console.log(err)));
+  }
+
+  nameOfState(orderState: number): string {
+    if(orderState >= 3)
+      return 'Done';
+    return this.states[orderState].replace(/([a-zA-Z])(?=[A-Z])/g, '$1 ');
   }
 }

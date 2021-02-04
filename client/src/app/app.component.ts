@@ -16,7 +16,7 @@ export class AppComponent {
     if (this.authService.getLoggedUser() != null) {
       this.authService
         .validateToken()
-        .then((res) => this.authService.setLoggedUser(res));
+        .then((res) => this.authService.setLoggedUser(res), err => this.authService.setLoggedUser(null));
     }
   }
 }

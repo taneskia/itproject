@@ -23,15 +23,15 @@ export class MarketsComponent implements OnInit {
 
   constructor(
     private marketService: MarketService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) {
-    //if (!this.authService.getLoggedUser())
-    //  router.navigateByUrl('/login?auth=1');
+    if (!this.authService.getLoggedUser())
+      router.navigateByUrl('/login?auth=1');
   }
 
   ngOnInit(): void {
     this.marketService.getMarkets().then((res) => {
-      console.log(res);
       this.markets = res;
     });
   }
